@@ -1,0 +1,17 @@
+<%= simple_form_for product_image, url: url, html: {method: method.to_sym, multipart: true}, 
+                    wrapper: :horizontal_form,
+                    wrapper_mappings: { file: :horizontal_file } do |f| %>
+  <div class="modal-body">
+    <%= image_tag product_image.image.url(:thumb), class: "img-fluid" unless product_image.new_record? %>
+    <%= f.input :image, as: :file %>
+    <div class="form-group row file optional product_product_images_image_note">
+      <label class="col-sm-3 form-control-label file optional">&nbsp;</label>
+      <div class="col-sm-9 img-note">Please upload image with size 1280px x 800px (height x width)</div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= link_to "Close", "javascript:void(0)", class: "btn btn-secondary", 
+                data: {dismiss: "modal"} %>
+    <%= f.button :submit, class: "btn-primary" %>
+  </div>
+<% end %>

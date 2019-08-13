@@ -1,0 +1,4 @@
+<% unless @product_image.nil? %>
+  $("#edit-image").html("<%= j(raw( render partial: 'modal_form', locals: {product_image: @product_image, title: "Edit", url: admin_product_image_path(@product.id, @product_image.id), method: 'put'}  )) %>");
+  $("#edit-image-modal").modal("show")
+<% end %>

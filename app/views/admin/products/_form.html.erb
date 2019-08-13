@@ -1,0 +1,56 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "/assets/ckeditor/ckeditor" %>
+<% end %>
+
+<%= simple_form_for [:admin, @product], wrapper: :horizontal_form, 
+                    wrapper_mappings: { 
+                      check_boxes: :horizontal_collection, 
+                      file:          :horizontal_file } do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :category_id, collection: @categories %>
+  <%= f.input :name %>
+  <% index = 0%>
+  <%= f.simple_fields_for :product_images do |p| %>
+    <% if p.object.new_record? %>
+      <%= p.input :image, as: :file, input_html: { multiple: true, 
+                  name: "product[product_images_attributes][][image]" }  %>
+    <% else%>
+      <% if index == 0%>
+        <div class="form-group row file optional product_product_images_image" id="manage-image">
+          <label class="col-sm-3 form-control-label file optional">Image</label>
+            <div class="col-sm-9">
+              <div class="col-sm-12 add-new-product-image">
+                <%= link_to "Add New Image", new_admin_product_image_path(@product.id), 
+                            class: "btn btn-success", remote: true %>
+              </div>
+      <% end %>
+      <% index +=1 %>
+
+      <span class="product-form-image <%= p.object.id.to_i == params[:failed_product_image].to_i ? 'image-error' : 'image-no-error' %>">
+        <%= image_tag p.object.image.url(:thumb), class: "img-fluid" %>
+        <%= link_to "edit", edit_admin_product_image_path(@product.id, p.object.id),
+                    class: "btn btn-primary", remote: true %>
+        <%= link_to "delete", admin_product_image_path(@product.id, p.object.id),  
+                    class: "btn btn-danger", :method => :delete, data: {:confirm => "Are you sure?"} %>
+      </span>
+
+      <% if index == f.object.product_images.size.to_i %>
+          </div>
+        </div>
+      <% end %>
+
+    <% end %>
+  <% end %>
+  <%= f.input :short_description, as: :text %>
+  <%= f.input :description, as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } } %>
+  <%= f.input :page, :as => :hidden, :input_html => { :value => params[:page] || 1 } %>
+  <div class="form-group row mb-0">
+    <div class="col-sm-9 offset-sm-3">
+      <%= f.button :submit, class: "btn-primary" %>
+      <%= link_to "Cancel", admin_products_path(:page => params[:page]), 
+                  class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>
+
+<div id="edit-image"></div>

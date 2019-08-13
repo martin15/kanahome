@@ -1,0 +1,99 @@
+<section class="main-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 header-n-breadcrumb">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h2>PRODUCTS<%#= "#{@category.name.titleize} - #{@brand.name.titleize}" %></h2>
+          </div>
+          <div class="col-12 col-md-6 align-self-center">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+                <li class="breadcrumb-item active" aria-current="page">Categories</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-3 order-2 order-md-1 product-side-menu">
+        <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+          <div class="card">
+            <div class="card-header product-side-menu-title" role="tab">CATEGORIES</div>
+          </div>
+          <% @categories.each do |category| %>
+            <% show = category.permalink == @category.permalink ? "show" : "" %>
+            <% collapsed = category.permalink == @category.permalink ? "" : "collapsed" %>
+            <div class="card">
+              <div class="card-header" role="tab" id="headingOne">
+                <a data-toggle="collapse" data-parent="#accordionEx" href="#<%= category.permalink %>" 
+                   aria-expanded="true" aria-controls="collapseOne" class="<%= collapsed %>">
+                  <span><%= category.name.titleize %></span> <i class="fa fa-angle-down rotate-icon pull-right"></i>
+                </a>
+              </div>
+
+              <div id="<%= category.permalink %>" class="collapse <%= show %> card-temp-body" 
+                   role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
+                  <div class="card-body">
+                    <ul  class="my-fa-ul">
+                      <% category.sub_categories.each_with_index do |sub_category, x| %>
+                        <%# selected_sub_category = @sub_category.permalink == sub_category.permalink ? "hover" : "" %>
+                        <% selected_sub_category = x == 1 ? "hover" : "" %>
+                        <li><%= fa_icon "angle-double-right" %>
+                          <%= link_to sub_category.name.titleize, "#", class: "#{selected_sub_category}" %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-12 col-md-9 order-1 order-md-2">
+        <div class="row mb-3">
+        <!--
+          <% (1..4).each do |x| %> 
+          <div class="col-12 col-md-4">
+              <div class="pd-box tg-verifiedad">
+                <figure class="img-hov detail-hov">
+                  <%#= raw(tag_value(product)) %>
+                  <%#= link_to product_path(category.permalink, brand.permalink, product.permalink) do %>
+                    <%#= image_tag product.image('thumb'), alt: "image description", class: "img-fluid" %>
+                  <%# end %>
+                  <%= image_tag "product-0#{x}.jpg", alt: "image description", class: "img-fluid"  %>
+                  <a href="#" class="show-detail btn">
+                    Quick View
+                    </a>
+                </figure>
+                <div class="product_extra product_sale"><a href="categories.html">Sale</a></div>
+                <div class="pd-box-content">
+                  <div class="pd-box-title">
+                    <h4>
+                    <%= link_to "Esprit Ruffle Shirt", "#" %>
+                      <%#= link_to product.name.titleize, 
+                                  product_path(category.permalink, brand.permalink, product.permalink) %>
+                    </h4>
+                  </div>
+                  <div class="pd-box-desc">
+                    $123
+                    <%#= raw(simple_format(product.short_specification)) %>
+                  </div>
+                  <div class="pd-box-detail">
+                    <%= link_to "DETAIL", "#" %>
+                    <%#= link_to "DETAIL", product_path(category.permalink, brand.permalink, product.permalink) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          -->
+
+          <%= render partial: "product_list", locals: { products: @products, category: @category} %>
+        </div>
+        <div class="col-12 pagination justify-content-center"><%#= paginate @products %></div>
+      </div>
+    </div>
+  </div>
+</section>
+

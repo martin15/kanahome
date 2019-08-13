@@ -1,0 +1,37 @@
+section.admin-section-content {
+  padding: 100px 0 20px;
+  min-height: 300px;
+  font-size: 14px;
+}
+
+section.admin-section-content .breadcrumb{
+  background-color: transparent;
+}
+
+section.admin-section-content a, #edit-image-modal input[type='submit']{
+  font-size: 14px;
+}
+
+.admin-categories div.form-check, .admin-brands div.form-check{
+  width: 33%;
+  float: left;
+}
+
+.admin-categories table{
+  margin-bottom: 40px;
+}
+
+#manage-image span{ float:left; margin-right:50px; }
+#manage-image .add-new-product-image, #manage-image .add-new-portfolio-image{ margin-bottom: 20px; }
+#edit-image-modal .modal-body img{ margin-bottom: 20px; }
+#edit-image-modal .modal-body .img-note, .input-note{ font-size: 12px; }
+#edit-image-modal .modal-body .product_image_image, 
+.admin-banners .banner_image, .admin-banners .banner_url,
+.admin-brands .brand_logo, .admin-news .news_banner,
+#edit-image-modal .modal-body  .portfolio_image_image { margin-bottom: 0px; }
+.product-form-image img, .portfolio-form-image img{ width: 200px; }
+.image-error{ border: 1px red solid; padding: 10px; border-radius: 5px; }
+.image-no-error{ border: 1px #fff solid; padding: 10px; border-radius: 5px; }
+
+
+

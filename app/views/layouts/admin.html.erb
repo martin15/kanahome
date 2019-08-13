@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <% if @meta_description.present? %>
+      <meta name="description" content="<%= @meta_description %>">
+    <% end %>
+    <meta name="author" content="">
+    <title><%= @meta_title ? @meta_title : ApplicationController::BRAND_NAME %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', 'style' %>
+    <%= javascript_include_tag 'application' %>
+    <%= yield :javascript_includes %>
+    <%= yield :css_includes %>
+    <!--[if lt IE 9]>
+      <script src="/assets/html5shiv.js"></script>
+      <script src="/assets/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- navbar -->
+    <nav id="nav" class="">
+      <div class="container">
+        <!-- logo -->
+        <%= link_to root_path, class: "logo" do %>
+        <%# <a class="logo" href="http://www.remonfawzi.com/projects/vamous"> %>
+          <%= image_tag "logo-white.png", class: "logo1 img-fluid", style: "width:200px" %>
+          <%= image_tag "logo.png", class: "logo2 img-fluid", style: "width:200px" %>
+        <%# </a> %>
+        <% end %>
+        <!-- menu bars -->
+        <div class="bars" id="bars">
+            <span class="first"></span>
+            <span class="second"></span>
+            <span class="third"></span>
+        </div>
+            
+        <ul id="menu" class="links">
+          <li><%= link_to "Home", admin_path %></li>
+          <li><%= link_to "Products", admin_products_path %></li>
+          <li><%= link_to "Category", admin_categories_path %></li>
+          <li><%= link_to "Contact Us", "#" %></li>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        </ul>        
+      </div>
+    </nav>
+
+    <%= yield %>
+
+    <footer>
+      <div class="footer-top-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-md-7 col-sm-7 col-12">
+              <div class="fw-info footer-widget">
+                <div class="flogo">
+                  <%= image_tag "logo-white.png", class: "logo2 img-fluid", style: "width:200px" %>
+                </div>
+                <p class="text">There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour.</p>
+                <h4 class="social-title">Follow Us</h4>
+                <ul class="social">
+                  <li class="facebook"><a href="#"><%= fa_icon "facebook" %></a></li>
+                  <li class="twitter"><a href="#"><%= fa_icon "twitter" %></a></li>
+                  <li class="google"><a href="#"><%= fa_icon "google-plus" %></a></li>
+                  <li class="linkedin"><a href="#"><%= fa_icon "linkedin" %></a></li>
+                  <li class="instagram"><a href="#"><%= fa_icon "instagram" %></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="fw-links footer-widget">
+                <h2 class="title">Useful Links</h2>
+                <ul class="links">
+                  <li><a href="04_about.html">About Us</a></li>
+                  <li><a href="05_service.html">Our Services</a></li>
+                  <li><a href="07_two-column-grid.html">Our Project</a></li>
+                  <li><a href="13_blog-grid.html">Blog</a></li>
+                  <li><a href="17_contact.html">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-5 col-12">
+              <div class="fw-contact footer-widget">
+                <h2 class="title">Contact info</h2>
+                <p class="text">
+                    Hans-Wilhelm-Gasse 0/3, 98051 Schwarzenberg Hans-Wilhelm-Gasse 0/3, 98051 
+                    Schwarzenberg Hans-Wilhelm-Gasse 0/3, 98051 Schwarzenberg
+                  </p>
+                <ul class="info">
+                  <li><span><%= fa_icon "phone" %></span>+011-125-541</li>
+                  <li><span><%= fa_icon "envelope" %></i></span>info@example.com</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom-area">
+        <div class="container">
+          <div class="row">
+              <div class="col-12">
+                <div class="copyright">
+                  <p>Copyright © 2018 <span class="custom-green">Elektrigo</span>. All Rights Reserved.</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer
+    <footer id="footer">
+        <div class="social-media">
+            <div class="container">
+              <a href="https://www.facebook.com/remon.fawzi1" class="facebook">
+                <i class="fa fa-facebook-f add-transition"></i>
+              </a>
+              <a href="https://www.instagram.com/remonfawzi/" class="instagram">
+                <i class="fa fa-instagram add-transition"></i>
+              </a>
+              <a href="https://twitter.com/rem0nfawzi" class="twitter">
+                <i class="fa fa-twitter add-transition"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/rem0nfawzi/" class="linked">
+                <i class="fa fa-linkedin add-transition"></i>
+              </a>
+            </div>
+        </div>
+        <div class="footer-text">
+            <div class="container">
+                <p>all copyrights reserved © 2018</p>
+            </div>
+        </div>
+    </footer> -->
+  </body>
+</html>

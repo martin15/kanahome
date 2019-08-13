@@ -1,0 +1,150 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "slick" %>
+  <%= stylesheet_link_tag  "slick" %>
+<% end %>
+
+<script>
+$(document).ready(function(){
+  $('.product-images').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+    asNavFor: '.product-images-slider',
+    nextArrow: $('.prev'),
+    prevArrow: $('.next')
+  });
+  $('.product-images-slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '.product-images',
+    centerMode: true,
+    focusOnSelect: true,
+    vertical: true,
+    arrows: false
+  });
+});
+</script>
+
+<section class="main-section">
+  <div class="container breadcrumb">
+    <div class="col-md-5 align-self-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item"><%= link_to "Category", "" %></li>
+          <li class="breadcrumb-item active" aria-current="page">Product Detail</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="container product-detail">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-7">
+        <div class="row">
+          <div class="col-12 col-md-2">
+            <div class="product-images-slider">
+              <% @product_images .each do |img| %>
+                <div class="item"><%= image_tag img.image.url(:thumb), class: "img-fluid" %></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-12 col-md-10">
+            <div class="product-images">
+              <% @product_images .each do |img| %>
+                <div class="item"><%= image_tag img.image.url(:medium), class: "img-fluid" %></div>
+              <% end %>
+            </div>
+            <div class="wrap-slick3-arrows flex-sb-m flex-w">
+              <button class="arrow-slick3 prev slick-arrow" style="">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+              </button>
+              <button class="arrow-slick3 next slick-arrow" style="">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-5 p-b-30">
+        <div style="padding-right: 10px;">
+          <h4 class="detail-name"><%= @product.name.titleize %></h4>
+          <span class="price">$58.79</span>
+          <div class="short-desc">
+            <%= raw(simple_format(@product.short_description)) %>  
+          </div>
+          <div class="p-t-33">
+            <div class="flex-w flex-m p-l-100 p-t-40 respon7">
+              <div class="flex-m bor9 p-r-10 m-r-11">
+                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+                  <i class="zmdi zmdi-favorite"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row product-desc">
+    <div class="col-12 col-md-10 tabulation">
+      <ul class="nav nav-tabs">
+        <li><a data-toggle="tab" href="#description" aria-expanded="false" class="active">Description</a></li>
+        <li><a data-toggle="tab" href="#manufacturer" aria-expanded="true">Manufacturer</a></li>
+        <li><a data-toggle="tab" href="#review" aria-expanded="false">Reviews</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="description" class="tab-pane active in fade show">
+          <%= raw(@product.description) %>
+        </div>
+        <div id="manufacturer" class="tab-pane fade ">
+          <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+          <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+        </div>
+        <div id="review" class="tab-pane fade">
+          <div class="row">
+            <div class="col-md-7">
+              <h3>23 Reviews</h3>
+            <div class="review">
+          <div class="user-img" style="background-image: url(images/person1.jpg)"></div>
+          <div class="desc">
+            <h4>
+              <span class="text-left">Jacob Webb</span>
+              <span class="text-right">14 March 2018</span>
+            </h4>
+            <p class="star">
+              <span>
+              <i class="icon-star-full"></i>
+              <i class="icon-star-full"></i>
+              <i class="icon-star-full"></i>
+              <i class="icon-star-half"></i>
+              <i class="icon-star-empty"></i>
+              </span>
+              <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+            </p>
+            <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+          </div>
+        </div>
+        <div class="review">
+          <div class="user-img" style="background-image: url(images/person2.jpg)"></div>
+          <div class="desc">
+            <h4>
+              <span class="text-left">Jacob Webb</span>
+              <span class="text-right">14 March 2018</span>
+            </h4>
+            <p class="star">
+              <span>
+                <i class="icon-star-full"></i>
+                <i class="icon-star-full"></i>
+                <i class="icon-star-full"></i>
+                <i class="icon-star-half"></i>
+                <i class="icon-star-empty"></i>
+              </span>
+              <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+            </p>
+            <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
