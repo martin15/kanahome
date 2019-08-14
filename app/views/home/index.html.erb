@@ -6,8 +6,8 @@
 <script>
   jQuery(document).ready(function($) {
     $('.banner').owlCarousel({
-      animateOut: 'slideOutDown',
-      animateIn: 'flipInX',
+      animateOut: 'fadeOut',
+      animateIn: 'fadeIn',
       loop: true,
       autoplay: true,
       autoplayHoverPause: true,
@@ -34,6 +34,9 @@
     </div>
     <div class="item">
       <%= image_tag "banner-2.jpg" %>
+    </div>
+    <div class="item">
+      <%= image_tag "banner-3.jpg" %>
     </div>
   </div>
 </section>
@@ -314,7 +317,7 @@
                 <li>
                   <span class="icon"><%= fa_icon "phone" %></span>
                   <span class="title">Call Us</span>
-                  <span class="details">+00 152 152 4920</span>
+                  <span class="details">+6222 2027 7424<br />+62 811 2263 767 (Whatsapp Only)</span>
                 </li>
                 <li>
                   <span class="icon"><%= fa_icon "envelope-o" %></span>
