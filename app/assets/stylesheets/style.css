@@ -1413,6 +1413,14 @@ img.p-image-4 { width: 400px; }
     width: 100%;
   }
 }
+@media (max-width: 650px) {
+  .faq-content { padding: 0 15px 10px 15px!important; }
+  img.p-image-4, img.p-image{
+    width: 100%;
+    margin-right: 0px!important;
+  }
+}
+
 
 .faq-content h1{
   font: 400 40px 'Montserrat', Arial, Helvetica, sans-serif;
@@ -1520,6 +1528,14 @@ a.a-blog:hover { color: #70B8B4; }
   color:#FFF;
   font-size:12px;
   display:block;
+}
+
+@media (max-width: 767px) {
+  .owl-nav{
+    display: none!important;
+  }
+  section{ padding-left: 15px;padding-right: 15px;}
+  section#home, section#hubungi-kami{ padding-left: 0px!important;padding-right: 0px!important}
 }
 
 
