@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post   '/login' => 'session#create', as: "login_create"
   delete '/logout' => 'session#destroy', as: "logout"
   post "contact_us" => "home#contact_us", as: "save_contact_us"
+  get "products/:permalink" => "home#product_detail", as: "product_detail"
   get 'tentang-kompor-induksi' => 'home#kompor_induksi', as: "kompor_induksi"
 
   get "admin" => "admin/dashboard#index", as: "admin"
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
     resources :products do
       member do
         resources :product_images, except: [:index], param: :product_image_id
+        get "product_images/:product_image_id/set_as_primary" => "product_images#set_as_primary", as: "set_as_primary"
+        resources :product_feature_details, param: :product_feature_detail_id
       end
     end
   end

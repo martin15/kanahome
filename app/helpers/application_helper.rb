@@ -24,4 +24,8 @@ module ApplicationHelper
     return "<span class='tg-themetag tg-featuretag'>#{text}</span>"
   end
 
+  def admin_menu_indicator(this_menu)
+    return "active" if this_menu.include?(controller_name)
+  end
+
 end

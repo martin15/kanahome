@@ -5,7 +5,6 @@
 <%= simple_form_for [:admin, @category], wrapper: :horizontal_form, 
                     wrapper_mappings: { check_boxes: :horizontal_collection } do |f| %>
   <%= f.error_notification %>
-  <%= f.input :parent_id, collection: @parent_categories %>
   <%= f.input :name %>
   <%= f.input :page, :as => :hidden, :input_html => { :value => params[:page] || 1 } %>
   <div class="form-group row mb-0">

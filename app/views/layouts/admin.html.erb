@@ -22,118 +22,62 @@
   </head>
 
   <body>
-    <!-- navbar -->
-    <nav id="nav" class="">
-      <div class="container">
-        <!-- logo -->
-        <%= link_to root_path, class: "logo" do %>
-        <%# <a class="logo" href="http://www.remonfawzi.com/projects/vamous"> %>
-          <%= image_tag "logo-white.png", class: "logo1 img-fluid", style: "width:200px" %>
-          <%= image_tag "logo.png", class: "logo2 img-fluid", style: "width:200px" %>
-        <%# </a> %>
-        <% end %>
-        <!-- menu bars -->
-        <div class="bars" id="bars">
-            <span class="first"></span>
-            <span class="second"></span>
-            <span class="third"></span>
+    <% adjust_header = "" %>
+    <% unless current_user.nil? %>
+      <% adjust_header = "logged" %>
+      <section class="d-none d-sm-block logged-user">
+        <div class="row">
+          <div class="col-12 user-info-bar">
+            <div class="row">
+              <div class="col-md-6 hidden-xs">&nbsp;</div>
+              <div class="col-md-6 hidden-xs" id="login-pan">
+                <%= raw welcome_text %>
+              </div>
+            </div>
+          </div>
         </div>
-            
-        <ul id="menu" class="links">
-          <li><%= link_to "Home", admin_path %></li>
-          <li><%= link_to "Products", admin_products_path %></li>
-          <li><%= link_to "Category", admin_categories_path %></li>
-          <li><%= link_to "Contact Us", "#" %></li>
-          <li><%= link_to "Logout", logout_path, method: :delete %></li>
-        </ul>        
+      </section>
+    <% end %>
+
+    <!-- navbar -->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-white sticky-top <%= adjust_header %>">
+      <div class="container">
+        <%= link_to root_path, class: "navbar-brand logo" do %>
+          <%= image_tag "Kanahome-Logo.png", class: "img-fluid" %>
+        <% end %> 
+        <!-- menu bars -->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul id="menu" class="nav links" >
+            <li class="nav-item"><%= link_to "Home", root_path(anchor: "home") %></li>
+            <li class="<%= admin_menu_indicator(['categories']) %> nav-item"><%= link_to "Categories", admin_categories_path %></li>
+            <li class="<%= admin_menu_indicator(['products', 'product_feature_details']) %> nav-item"><%= link_to "Products", admin_products_path %></li>
+            <li class="<%= admin_menu_indicator(['banners']) %> nav-item"><%= link_to "Banner", admin_banners_path %></li>
+          </ul>
+        </div>
       </div>
     </nav>
 
     <%= yield %>
 
     <footer>
-      <div class="footer-top-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-5 col-md-7 col-sm-7 col-12">
-              <div class="fw-info footer-widget">
-                <div class="flogo">
-                  <%= image_tag "logo-white.png", class: "logo2 img-fluid", style: "width:200px" %>
-                </div>
-                <p class="text">There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour.</p>
-                <h4 class="social-title">Follow Us</h4>
-                <ul class="social">
-                  <li class="facebook"><a href="#"><%= fa_icon "facebook" %></a></li>
-                  <li class="twitter"><a href="#"><%= fa_icon "twitter" %></a></li>
-                  <li class="google"><a href="#"><%= fa_icon "google-plus" %></a></li>
-                  <li class="linkedin"><a href="#"><%= fa_icon "linkedin" %></a></li>
-                  <li class="instagram"><a href="#"><%= fa_icon "instagram" %></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
-              <div class="fw-links footer-widget">
-                <h2 class="title">Useful Links</h2>
-                <ul class="links">
-                  <li><a href="04_about.html">About Us</a></li>
-                  <li><a href="05_service.html">Our Services</a></li>
-                  <li><a href="07_two-column-grid.html">Our Project</a></li>
-                  <li><a href="13_blog-grid.html">Blog</a></li>
-                  <li><a href="17_contact.html">Contact</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-5 col-sm-5 col-12">
-              <div class="fw-contact footer-widget">
-                <h2 class="title">Contact info</h2>
-                <p class="text">
-                    Hans-Wilhelm-Gasse 0/3, 98051 Schwarzenberg Hans-Wilhelm-Gasse 0/3, 98051 
-                    Schwarzenberg Hans-Wilhelm-Gasse 0/3, 98051 Schwarzenberg
-                  </p>
-                <ul class="info">
-                  <li><span><%= fa_icon "phone" %></span>+011-125-541</li>
-                  <li><span><%= fa_icon "envelope" %></i></span>info@example.com</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="footer-bottom-area">
         <div class="container">
           <div class="row">
               <div class="col-12">
                 <div class="copyright">
-                  <p>Copyright © 2018 <span class="custom-green">Elektrigo</span>. All Rights Reserved.</p>
+                  <p>Copyright © <%= Date.today.year %> 
+                     <span class="custom-green">Kanahome By Elektrigo</span>. All Rights Reserved.</p>
                 </div>
               </div>
           </div>
         </div>
       </div>
     </footer>
-    <!-- footer
-    <footer id="footer">
-        <div class="social-media">
-            <div class="container">
-              <a href="https://www.facebook.com/remon.fawzi1" class="facebook">
-                <i class="fa fa-facebook-f add-transition"></i>
-              </a>
-              <a href="https://www.instagram.com/remonfawzi/" class="instagram">
-                <i class="fa fa-instagram add-transition"></i>
-              </a>
-              <a href="https://twitter.com/rem0nfawzi" class="twitter">
-                <i class="fa fa-twitter add-transition"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/rem0nfawzi/" class="linked">
-                <i class="fa fa-linkedin add-transition"></i>
-              </a>
-            </div>
-        </div>
-        <div class="footer-text">
-            <div class="container">
-                <p>all copyrights reserved © 2018</p>
-            </div>
-        </div>
-    </footer> -->
   </body>
 </html>

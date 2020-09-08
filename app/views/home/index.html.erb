@@ -1,6 +1,6 @@
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "owl.carousel" %>
-  <%= stylesheet_link_tag  "owl.carousel", "animate", "owl.theme" %>
+  <%= stylesheet_link_tag  "owl.carousel", "animate", "owl.theme", "lunar" %>
 <% end %>
 
 <script>
@@ -21,62 +21,60 @@
 </script>
 
 <!-- header -->
-<% adjust_header = current_user.nil? ? "" : "logged-banner" %>
-<section id="home" class="<%= adjust_header %>">
+<%# adjust_header = current_user.nil? ? "" : "logged-banner" %>
+<section id="home">
   <div class="banner owl-carousel owl-theme">
-    <div class="item">
-      <%# <div class="custom-overlay-inner">
-        <h4>Title</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget massa 
-            a lectus aliquet elementum.</p>
-      </div> %>
-      <%= image_tag "banner-1.jpg" %>
-    </div>
-    <div class="item">
-      <%= image_tag "banner-2.jpg" %>
-    </div>
-    <div class="item">
-      <%= image_tag "banner-3.jpg" %>
-    </div>
+    <% @banners.each do |banner| %>
+      <div class="item">
+        <% alt = banner.alt.blank? ? banner.image.file.filename : banner.alt %>
+        <%= image_tag banner.image.url, alt: alt  %>
+      </div>
+    <% end %>
   </div>
 </section>
 
 <section id="kompor-induksi" class="main-section">
   <div class="container">
     <div class="row justify-content-center">
-      <h1>KENAPA MEMILIH<strong>KOMPOR INDUKSI</strong></h1>
-      <div class="headline">
-        Apa itu kompor induksi? Apa bedanya dengan kompor lainnya? Memang apa kelebihannya?<br />
-        Ayo lebih memahami apa itu kompor induksi dan kenapa semakin
-        populer di kalangan masyarakat modern.<br /><br />
-        <%= link_to "KLIK DISINI", kompor_induksi_path, class: "btn btn-outline-green" %>
+      <div class="col-12 text-center mb-5">
+        <%= image_tag "Mengapa-pilih-kompor_induksi.png", class: "img-fluid",
+                      alt: "Kanahome, kompor induksi, kitchenware" %>
       </div>
-		</div>
-    </div>
-  </div>
-</section>
-
-<section id="home-product-desc">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-4 col-12 left-content">
+      <div class="col-12 headline">
+        <%= link_to "KLIK DISINI", kompor_induksi_path, class: "btn btn-green" %>
+      </div>
+    
+      <div class="col-md-4 col-3 left-content">
         <div class="the-box">
           <h1>Lebih Aman</h1>
           <div class="desc">
-            Takut gas bocor? Suka lupa matiin kompor setelah masak? Khawatir anak memainkan kompor?
-            Pakai kompor induksi, masalah-masalah tadi tidak akan anda alami lagi.
+            Ga ada lagi gas bocor atau masakan gosong karena kelupaan dimatiin.
           </div>
         </div>
         <div class="the-box">
-          <h1>Bentuk Elegan & Kekinian</h1>
+          <h1>Praktis</h1>
           <div class="desc">
-            Selain bentuknya modern, juga hemat ruang.
+            Mudah disimpan, juga mudah dibersihkan, tinggal di-lap saja. Tidak perlu angkat tabung gas lagi.
           </div>
         </div>
         <div class="the-box">
-          <h1>Kanahome Harga Ekonomis, dan Bergaransi</h1>
+          <h1>Minimalis Inspired</h1>
           <div class="desc">
-            Kata siapa kompor induksi mahal?
+            Bentuknya modern minimalis, juga hemat ruang.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-6">
+        <%= image_tag "kompor-kanahome.gif", class: "img-fluid mb-5 mx-auto d-block",
+                      alt: "Kanahome, kompor induksi, kitchenware" %>
+      </div>
+
+      <div class="col-md-4 col-3 right-content">
+        <div class="the-box">
+          <h1>Masak Lebih Cepat</h1>
+          <div class="desc">
+            Karena panas yang diterima oleh alat masak lebih merata dan efisien diterima 90% oleh alat masak.
           </div>
         </div>
         <div class="the-box">
@@ -85,39 +83,20 @@
             Dilengkapi fitur Child-Lock, Timer, Sensor Panas dan Mode Memasak untuk memudahkan anda.
           </div>
         </div>
+        <div class="the-box">
+          <h1>Eco-Friendly</h1>
+          <div class="desc">
+            Tidak ada api dan asap, tidak menghasilkan gas buang yang dapat mengakibatkan polusi.
+          </div>
+        </div>
       </div>
-
-      <div class="col-md-4 col-12">
-        <%= image_tag "K-655plate.jpg", class: "img-fluid mb-5 mx-auto d-block" %>
-        <%= image_tag "K-60Mplate.jpg", class: "img-fluid mx-auto d-block" %>
-      </div>
-
-      <div class="col-md-4 col-12 right-content">
+      <div class="col-12 col-md-8 text-center mb-5">
         <div class="the-box">
-          <h1>Ramah Lingkungan</h1>
+          <h1>Hemat, Harga Ekonimis, Garansi Terjamin</h1>
           <div class="desc">
-            Tidak ada api dan asap, berarti tidak mengeluarkan emisi CO2,
-            tidak menghasilkan gas buang yang dapat mengakibatkan polusi.
-          </div>
-        </div>
-        <div class="the-box">
-          <h1>Masak Lebih Cepat</h1>
-          <div class="desc">
-            Kenapa? Karena panas yang diterima oleh alat masak lebih merata
-            dan efisien diterima 90% oleh alat masak.
-          </div>
-        </div>
-        <div class="the-box">
-          <h1>Praktis</h1>
-          <div class="desc">
-            Mudah disimpan, juga mudah dibersihkan, tinggal di-lap saja.
-            Tidak perlu angkat tabung gas lagi.
-          </div>
-        </div>
-        <div class="the-box">
-          <h1>Biayanya Mahal?</h1>
-          <div class="desc">
-            Masih kira masak dengan kompor induksi mahal selangit? Yuk cari tahu, klik disini.
+            Terbukti biaya pemakaian listrik kompor induksi lebih hemat 15% lho! 
+            Apalagi kompor induksi KANAhome harganya ekonomis tapi tetap kualitas bagus dan 
+            garansi terjamin.<!-- Lihat buktinya! -->
           </div>
         </div>
       </div>
@@ -125,164 +104,82 @@
   </div>
 </section>
 
-<section id="produk" class="main-section">
+<section id="produk" class="main-section product-head">
   <div class="container">
-    <div class="row k-625">
-      <div class="col-12 col-md-6"><%= image_tag "K625.jpg", class: "img-fluid mb-5"%></div>
-      <div class="col-12 col-md-6">
-        <h2 class="prod-n">Tipe K-625</h2>
-        <div class="row prod-desc">
-          <div class="col-12 col-md-5">
-            <p class='sub-title'>Spesifikasi</p>
-            <p class="t-text">
-              Model 1 tungku<br />
-              Daya Maksimal : 1300 W<br />
-              Daya Minimal : 120 W<br />
-              Dimensi : 31 x 38 x 6.5 cm<br />
-            </p>
-          </div>
-          <div class="col-12 col-md-7">
-            <p class='sub-title'>Fitur</p>
-            <p class="t-text">
-              <ul class="t-text">
-                <li>Dilengkapi fitur TIMER / PRE-SET</li>
-                <li>8 mode memasak</li>
-                <li>Harga ekonomis, dapatkan hadiah panci induksi</li>
-                <li>Sensor keamanan mematikan kompor saat tidak ada alat masak di atasnya</li>
-                <li>Sensor alarm dan otomatis mati saat suhu terlalu panas</li>
-                <li>Model portable, mudah disimpan dan dipindahkan</li>
-                <li>Dapatkan hadiah panci induksi</li>
-              </ul>
+    <div class="row our-products">
+      <div class="col-12"><h2>PRODUK KAMI</h2></div>
+      <div class="col-12 text-center">
+        <ul class="sub-menu">
+          <li class="ic clicked"><%= link_to "Kompor Induksi", "javascript:void(0)", id: "kompor-induksi-link" %></li>
+          <li class="ct"><%= link_to "Alat Masak", "javascript:void(0)", id: "kitchenware-link" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-            </p>
+<section class="products kompor-induksi">
+  <div class="container">
+    <div class="row">
+      <% @kompor_induksi_products.each do |product| %>
+        <div class="col-4">
+          <div class="product">
+            <%= image_tag product.primary_image, class: "img-fluid mb-4" %>
+            <div class="cat_name"><%= product.category_name %></div>
+            <div class="p_name"><%= product.name %></div>
+            <div class="price">
+              <%= number_to_currency(product.price, unit: 'Rp ', separator: ',', delimiter: '.') %>
+            </div>
+            <hr />
+            <div class="p_spec">
+              <ul>
+                <% product.short_description.split("\n").each do |desc| %>
+                  <li><%= desc %></li>
+                <% end %>
+              </ul>
+            </div>
+            <hr />
+            <div class="p_button">
+              <%= link_to "Detail", product_detail_path(product.permalink), class: "btn btn-outline-green" %>
+              <%= link_to "Beli Sekarang", "#", class: "btn btn-pink",
+                          data: {toggle: "modal", target: "#shop_modal"} %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
-    <div class="row k-655">
-      <div class="col-12 col-md-6 order-2 order-md-1">
-        <h2 class="prod-n">Tipe K-655</h2>
-        <div class="row prod-desc">
-          <div class="col-12 col-md-5">
-            <p class='sub-title'>Spesifikasi</p>
-            <p class="t-text">
-              Model 1 tungku<br />
-              Daya Maksimal : 1600 W<br />
-              Daya Minimal : 120 W<br />
-              Dimensi : 29 x 37 x 3.8 cm<br />
-            </p>
-          </div>
-          <div class="col-12 col-md-7">
-            <p class='sub-title'>Fitur</p>
-            <p class="t-text">
-              <ul class="t-text">
-                <li>Dilengkapi fitur TIMER / PRE-SET</li>
-                <li>Memiliki fitur CHILD LOCK</li>
-                <li>5 mode memasak pintar dengan sistem timer</li>
-                <li>Dapat menunjukkan pilihan daya dan suhu</li>
-                <li>Sensor keamanan mematikan kompor saat tidak ada alat masak di atasnya</li>
-                <li>Sensor alarm dan otomatis mati saat suhu terlalu panas</li>
-                <li>Model portable, mudah disimpan dan dipindahkan</li>
-                <li>Bentuk lebih ramping</li>
-                <li>Dapatkan hadiah panci induksi</li>
-              </ul>
+  </div>
+</section>
 
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 order-1 order-md-2"><%= image_tag "K655.jpg", class: "img-fluid mb-5"%></div>
-    </div>
-    <div class="row k-60m">
-      <div class="col-12 col-md-6"><%= image_tag "K60M.jpg", class: "img-fluid mb-5"%></div>
-      <div class="col-12 col-md-6">
-        <h2 class="prod-n">Tipe K-60M</h2>
-        <div class="row prod-desc">
-          <div class="col-12 col-md-5">
-            <p class='sub-title'>Spesifikasi</p>
-            <p class="t-text">
-              Model 1 tungku Mini<br />
-              Daya Maksimal : 900 W<br />
-              Dimensi : 25 x 21 x 5.5 cm<br />
-            </p>
-          </div>
-          <div class="col-12 col-md-7">
-            <p class='sub-title'>Fitur</p>
-            <p class="t-text">
-              <ul class="t-text">
-                <li>Model mini, hemat ruang</li>
-                <li>Dapat digunakan portable/ ditanam</li>
-                <li>Cocok untuk rumah makan rebus-rebusan / shabu-shabu</li>
-                <li>Menu simple : Menghangatkan (Warm) dan Memasak (Hot Pot)</li>
-                <li>3 Level Panas : Low – Mid - High</li>
-                <li>Sensor keamanan mematikan kompor saat tidak ada alat masak di atasnya</li>
-                <li>Sensor alarm dan otomatis mati saat suhu terlalu panas</li>
+<section class="products kitchenware" style="display:none">
+  <div class="container">
+    <div class="row">
+      <% @kitchenware_products.each do |product| %>
+        <div class="col-4">
+          <div class="product">
+            <%= image_tag product.primary_image, class: "img-fluid mb-4" %>
+            <div class="cat_name"><%= product.category_name %></div>
+            <div class="p_name"><%= product.name %></div>
+            <div class="price">
+              <%= number_to_currency(product.price, unit: 'Rp ', separator: ',', delimiter: '.') %>
+            </div>
+            <hr />
+            <div class="p_spec">
+              <ul>
+                <% product.short_description.split("\n").each do |desc| %>
+                  <li><%= desc %></li>
+                <% end %>
               </ul>
-            </p>
+            </div>
+            <hr />
+            <div class="p_button">
+              <%= link_to "Detail", product_detail_path(product.permalink), class: "btn btn-green" %>
+              <%= link_to "Beli Sekarang", "#", class: "btn btn-outline-pink",
+                          data: {toggle: "modal", target: "#shop_modal"} %>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row k-67">
-      <div class="col-12 col-md-6 order-2 order-md-1">
-        <h2 class="prod-n">Tipe K-67</h2>
-        <div class="row prod-desc">
-          <div class="col-12 col-md-5">
-            <p class='sub-title'>Spesifikasi</p>
-            <p class="t-text">
-              Model 2 tungku flat<br />
-              Daya Maksimal tiap tungku : 1300 W + 1300 W<br />
-              Daya Maksimal dua tungku dinyalakan : 2200 W<br />
-              Dimensi : 72 x 43 x 8 cm<br />
-            </p>
-          </div>
-          <div class="col-12 col-md-7">
-            <p class='sub-title'>Fitur</p>
-            <p class="t-text">
-              <ul class="t-text">
-                <li>Bagian dasar dari metal, dapat ditanam</li>
-                <li>Dapat diatur dari daya terkecil 200 W</li>
-                <li>Dilengkapi fitur TIMER dan CHILD LOCK</li>
-                <li>Dapat menunjukkan pilihan daya dan suhu</li>
-                <li>Sensor keamanan mematikan kompor saat tidak ada alat masak di atasnya</li>
-                <li>Sensor alarm dan otomatis mati saat suhu terlalu panas</li>
-              </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 order-1 order-md-2"><%= image_tag "K67.jpg", class: "img-fluid mb-5"%></div>
-    </div>
-    <div class="row k-68g">
-      <div class="col-12 col-md-6"><%= image_tag "K68G.jpg", class: "img-fluid mb-5"%></div>
-      <div class="col-12 col-md-6">
-        <h2 class="prod-n">Tipe K-68G</h2>
-        <div class="row prod-desc">
-          <div class="col-12 col-md-5">
-            <p class='sub-title'>Spesifikasi</p>
-            <p class="t-text">
-              Model 2 tungku cekung + flat<br />
-              Daya Maksimal tiap tungku : 2200 W + 2200 W<br />
-              Daya Maksimal dua tungku dinyalakan : 3400 W<br />
-              Dimensi : 72 x 42 x 11 cm<br />
-            </p>
-          </div>
-          <div class="col-12 col-md-7">
-            <p class='sub-title'>Fitur</p>
-            <p class="t-text">
-              <ul class="t-text">
-                <li>Tungku cekung menggunakan wajan penggorengan cekung</li>
-                <li>Cocok untuk restoran atau kebutuhan api besar</li>
-                <li>Dilengkapi fitur TIMER dan LOCK BUTTON</li>
-                <li>Dapat menunjukkan pilihan daya dan suhu</li>
-                <li>Sensor keamanan mematikan kompor saat tidak ada alat masak di atasnya</li>
-                <li>Sensor alarm dan otomatis mati saat suhu terlalu panas</li>
-                <li>Dapatkan set panci dan wajan induksi</li>
-              </ul>
-            </p>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </section>
@@ -375,53 +272,73 @@
               </div> <!-- col-md-12 -->
             </div>
           <% end %>
-
-
-
-
-
-
-          
-
-
-
-          <%# <form action="mail.php" method="post" id="cf">
-            <div class="row">
-              <div class="col-12">
-                <div class="ca-input-box">
-                    <input type="text" placeholder="Name" id="fname" name="fname" required="">
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="ca-input-box">
-                    <input type="text" placeholder="Email" id="email" name="email" required="">
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="ca-input-box">
-                    <input type="text" placeholder="Phone" id="phone" name="phone">
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="ca-input-box">
-                    <textarea class="contact-textarea" placeholder="Message" id="msg" name="msg"></textarea>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="ca-input-box">
-                    <button id="submit" class="btn btn-outline-green" name="submit">SEND MESSAGE</button>
-                </div>
-            </div> %>
-            </div>
-          </form>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Modal -->
+<div class="modal fade"  id="shop_modal"  tabindex="-1" role="dialog"
+     aria-labelledby="demoModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-content">
+      <div class="container-fluid">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="pt-sm-3 mb-4 text-center">Beli Sekarang</h2>
+          </div>
+          <div class="col-md-12 text-center" style="padding:0 170px 20px">
+            <%= link_to (image_tag "icon-shopee.png", class: "img-fluid"), 
+                                  "https://shopee.co.id/elektrigo", target: "blank" %>
+          </div>
+          <div class="col-md-12 text-center" style="padding:0 170px 50px">
+            <%= link_to (image_tag "icon-tokopedia.png", class: "img-fluid"), 
+                                  "https://www.tokopedia.com/kanahome-id", target: "blank" %>
+          </div>
+          <!--
+            <div class="col-md-6 bg-img rounded-left m-h-60 d-none d-sm-block" 
+                 style="background-image: url('https://images.unsplash.com/photo-1538943963832-856b555cd29b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+            </div>
+            <div class="col-md-6 py-5 px-sm-5 ">
+              <h4 class="pt-sm-3 mb-4">Beli Sekarang</h4>
+              <p class="text-muted">
+                  <%= link_to (image_tag "icon-shopee.png", class: "img-fluid"), 
+                                  "https://shopee.co.id/elektrigo", target: "blank" %>
+              </p>
+              <p>
+                <%= link_to (image_tag "icon-tokopedia.png", class: "img-fluid"), 
+                                  "https://www.tokopedia.com/kanahome-id", target: "blank" %>
+              </p>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Ends -->
+
 <script>
   $(document).ready(function () {
+    $("#kompor-induksi-link").click(function(){
+      $("#kompor-induksi-link").parent().addClass('clicked')
+      $("#kitchenware-link").parent().removeClass('clicked')
+      $('.kitchenware').fadeOut(300, function() {
+        $('.kompor-induksi').fadeIn(300)
+      });
+    })
+    $("#kitchenware-link").click(function(){
+      $("#kitchenware-link").parent().addClass('clicked')
+      $("#kompor-induksi-link").parent().removeClass('clicked')
+      $('.kompor-induksi').fadeOut(300, function() {
+        $('.kitchenware').fadeIn(300)
+      });
+    })
+
+
     if(window.location.href.indexOf("#") >= 0){
       anr = "#" + window.location.href.split("#")[1];
       $('html, body').animate({

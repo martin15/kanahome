@@ -1,0 +1,22 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "/assets/ckeditor/ckeditor" %>
+<% end %>
+
+<%= f.error_notification %>
+<%= f.input :icon_title %>
+<%= f.input :icon, as: :file %>
+<%= f.input :title %>
+<%= f.input :image, as: :file %>
+<%= f.input :order_no %>
+<%= f.input :description, as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } } %>
+
+
+<%= f.input :page, :as => :hidden, :input_html => { :value => params[:page] || 1 } %>
+<div class="form-group row mb-0">
+  <div class="col-sm-9 offset-sm-3">
+    <%= f.button :submit, class: "btn-primary" %>
+    <%= link_to "Cancel", admin_products_path(:page => params[:page]), 
+                class: "btn btn-outline-secondary" %>
+  </div>
+</div>
+

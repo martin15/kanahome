@@ -1,0 +1,161 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "slick" %>
+  <%= stylesheet_link_tag  "slick", "slick-theme", "lunar" %>
+<% end %>
+
+<section id="product-detail" class="product-detail">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 p_detail">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-1 p_image_nav">
+            <div class="product-d-nav">
+              <% @images.each do |image| %>
+                <div class="item"><%= image_tag image.image.url(:thumb), class: "img-fluid" %></div>
+              <% end %>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-6 p_image">
+            <div class="product-d-img">
+              <% @images.each do |image| %>
+                <div class="item"><%= image_tag image.image.url(:medium), class: "img-fluid" %></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-12 p_image_mobile">
+            <div class="product-d-img-mobile">
+              <% @images.each do |image| %>
+                <div class="item"><%= image_tag image.image.url(:medium), class: "img-fluid" %></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-12 col-md-5 p_desc">
+            <div class="p_name"><%= @product.name %></div>
+            <div class="p_spec mb-4">
+              <ul>
+                <% @product.short_description.split("\n").each do |desc| %>
+                  <li><%= desc %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= link_to "Beli Sekarang", kompor_induksi_path, class: "btn btn-outline-green",
+                        data: {toggle: "modal", target: "#shop_modal"} %>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 p_icon">
+        <div class="row">
+          <% @feature_details.each_with_index do |detail, x| %>
+            <% temp_class = (x % 2) == 0 ? "border_odd" : "border_even" %>
+            <% temp_class = "" if (x + 1) == @feature_details.size %>
+            <div class="col-6 col-md-3 <%= temp_class %>">
+              <div class="p_icon_title"><%= detail.icon_title %></div>
+              <%= image_tag detail.icon.url(:thumb), class: "img-fluid" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <% @feature_details.each_with_index do |detail, x| %>
+        <% temp_class_image = (x % 2) == 0 ? "order-md-1 order-1" : "order-md-2 order-1" %>
+        <% temp_class_detail = (x % 2) == 0 ? "order-md-2 order-1" : "order-md-1 order-2" %>
+        <div class="col-12 p_feature_detail">
+          <div class="row">
+            <div class="col-12 col-md-5 <%= temp_class_image %>"><%= image_tag detail.image.url(:medium), class: "img-fluid" %></div>
+            <div class="col-12 col-md-7 <%= temp_class_detail %>">
+              <div class="p_feature_detail_title"><%= detail.title %></div>
+              <div class="p_feature_detail_desc"><%= raw(detail.description) %></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if !@product.specification.blank? && !@product.feature.blank? %>
+        <div class="col-12 p_spec_feature">
+          <div class="row">
+            <% unless @product.specification.blank? %>
+              <div class="col-12 col-md-6 spec_detail">
+                <div class="row">
+                  <div class="col-12"><h2>Spesifikasi</h2></div>
+                  <% @product.specification.split("#").each do |spec| %>
+                    <div class="col-6 detail"><%= simple_format spec %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <% unless @product.feature.blank? %>
+              <div class="col-12 col-md-6 feature_detail">
+                <div class="row">
+                  <div class="col-12"><h2>Fitur</h2></div>
+                  <% @product.feature.split("#").each do |spec| %>
+                    <div class="col-6 detail"><%= simple_format spec %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade"  id="shop_modal"  tabindex="-1" role="dialog"
+     aria-labelledby="demoModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-content">
+
+      <div class="container-fluid">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="pt-sm-3 mb-4 text-center">Beli Sekarang</h2>
+          </div>
+          <div class="col-md-12 text-center" style="padding:0 170px 20px">
+            <%= link_to (image_tag "icon-shopee.png", class: "img-fluid"), 
+                                  "https://shopee.co.id/elektrigo", target: "blank" %>
+          </div>
+          <div class="col-md-12 text-center" style="padding:0 170px 50px">
+            <%= link_to (image_tag "icon-tokopedia.png", class: "img-fluid"), 
+                                  "https://www.tokopedia.com/kanahome-id", target: "blank" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Ends -->
+
+<script>
+  $(document).ready(function () {
+    $('.product-d-img-mobile').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      fade: true
+    });
+    
+    $('.product-d-img').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      fade: true,
+      asNavFor: '.product-d-nav'
+    });
+    $('.product-d-nav').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      asNavFor: '.product-d-img',
+      vertical: true,
+      focusOnSelect: true,
+      arrows: false
+    });
+  });
+</script>

@@ -1,0 +1,28 @@
+<%# content_for :javascript_includes do %>
+  <%#= javascript_include_tag "/assets/ckeditor/ckeditor" %>
+<%# end %>
+
+<%= simple_form_for [:admin, @banner], html: {multipart: true}, wrapper: :horizontal_form,
+                    wrapper_mappings: { file: :horizontal_file }  do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :image, as: :file  %>
+  <div class="form-group row file optional input-note">
+    <label class="col-sm-3 form-control-label file optional">&nbsp;</label>
+    <div class="col-sm-9 input-note">please upload image with size 1500px x 469px (width x height)</div>
+  </div>
+  <%#= f.input :url %>
+  <!--
+  <div class="form-group row file optional input-note">
+    <label class="col-sm-3 form-control-label file optional">&nbsp;</label>
+    <div class="col-sm-9 input-note">e.g www.google.com (without http://)</div>
+  </div>-->
+  <%= f.input :alt %>
+  <div class="form-group row mb-0">
+    <div class="col-sm-9 offset-sm-3">
+      <%= f.button :submit, class: "btn-primary" %>
+      <%= link_to "Cancel", admin_banners_path(:page => params[:page]), 
+                  class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>
+

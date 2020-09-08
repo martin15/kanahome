@@ -1,7 +1,7 @@
 class Admin::ProductImagesController < Admin::ApplicationController
   protect_from_forgery with: :null_session
-  before_action :find_product, :only => [:new, :create, :edit, :update, :destroy]
-  before_action :find_product_image, :only => [:edit, :update, :destroy]
+  before_action :find_product, :only => [:new, :create, :edit, :update, :destroy, :set_as_primary]
+  before_action :find_product_image, :only => [:edit, :update, :destroy, :set_as_primary]
 
   # def index
   #   @product_images = ProductImage.all.page(params[:page]).per(20)
@@ -47,6 +47,14 @@ class Admin::ProductImagesController < Admin::ApplicationController
   def destroy
     flash[:notice] =  @product_image.destroy ? 'ProductImage was successfully deleted.' :
                                                 'ProductImage was falied to delete.'
+    redirect_to edit_admin_product_path(@product.id)
+  end
+
+  def set_as_primary
+    @product_images = @product.product_images.update_all(is_primary: false)
+    @product_image.is_primary = true
+    @product_image.save
+    flash[:notice] = 'ProductImage was successfully set as primary image.'
     redirect_to edit_admin_product_path(@product.id)
   end
 

@@ -35,8 +35,15 @@
                 <th scope="row"><%= @no+x+1 %></th>
                 <td><%= product.name %></td>
                 <td><%= product.try(:category).try(:name) %></td>
-                <td><%= product.short_description %></td>
+                <td class="p_spec">
+                  <ul>
+                  <% product.short_description.split("\n").each do |x| %>
+                    <li><%= x %></li>
+                  <% end %>
+                  </ul>
+                </td>
                 <td>
+                  <%= link_to "Feature Detail", admin_product_feature_details_path(product.id), :class => "btn btn-primary" %>
                   <%= link_to "Edit", edit_admin_product_path(product.id, :page => params[:page]), :class => "btn btn-success" %>
                   <%= link_to "Delete", admin_product_path(product.id, :page => params[:page] ), :method => :delete,
                                         data: {:confirm => "Are you sure?"}, :class => "btn btn-danger" %>

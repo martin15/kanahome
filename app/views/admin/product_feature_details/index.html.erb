@@ -1,0 +1,62 @@
+<section class="admin-section-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 header-n-breadcrumb">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h2>PRODUCT DETAILS</h2>
+          </div>
+          <div class="col-12 col-md-6 align-self-center">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+                <li class="breadcrumb-item"><%= link_to "Products", admin_products_path %></li>
+                <li class="breadcrumb-item active" aria-current="page">Product Details</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 admin-products">
+        <%= render :partial => "shared/flash" %>
+        <p><%= link_to "Add new product", new_admin_product_feature_detail_path(id: @product.id), class: "btn btn-primary" %></p>
+        <br />
+        <h3>Product Name : <%= @product.name %></h3><br /><br />
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>icon</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Order</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @product_feature_details.each_with_index do |detail, x| %>
+              <tr>
+                <th scope="row"><%= @no+x+1 %></th>
+                <td><%= image_tag detail.icon.url(:thumb) %></td>
+                <td><%= detail.title %></td>
+                <td><%= raw detail.description %></td>
+                <td><%= detail.order_no %></td>
+                <td>
+                  <%= link_to "Edit", edit_admin_product_feature_detail_path(id: @product.id, product_feature_detail_id: detail.id),
+                                      :class => "btn btn-success" %>
+                  <%= link_to "Delete", admin_product_feature_detail_path(id: @product.id, product_feature_detail_id: detail.id),
+                                        :method => :delete,
+                                        data: {:confirm => "Are you sure?"}, :class => "btn btn-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="col-xs-12 pagination justify-content-center"><%= paginate @product_feature_details %></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

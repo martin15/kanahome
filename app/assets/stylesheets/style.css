@@ -1,4 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,500,600,700|Montserrat:200,400,600,700');
+/* @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,500,600,700|Montserrat:200,400,600,700'); */
+
+@font-face {font-family: "SamsungOne-600";
+  src: url("./fonts/SamsungOne-600.eot"); /* IE9*/
+  src: url("./fonts/SamsungOne-600.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("./fonts/SamsungOne-600.woff2") format("woff2"), /* chrome、firefox */
+  url("./fonts/SamsungOne-600.woff") format("woff"), /* chrome、firefox */
+  url("./fonts/SamsungOne-600-600.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("./fonts/SamsungOne-600.svg#SamsungOne-600") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {font-family: "SamsungOne-Bold";
+  src: url("./fonts/SamsungOne-Bold.woff") format("woff"), /* chrome、firefox */
+  url("./fonts/SamsungOne-Bold.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
 
 body {
   font-family: 'Lato', sans-serif!important;
@@ -13,6 +27,8 @@ p {color: #000;}
 .main-section .breadcrumb ol.breadcrumb li { font-size: 13px; }
 
 strong { font-weight: 700!important; }
+
+.no-p-lr{ padding-left: 0!important; padding-right: 0!important;}
 /*---------------------------------------
                 NAV
 ----------------------------------------*/
@@ -335,9 +351,11 @@ nav#t-logo{ height: 80px;}
 /*---------------------------------------
                 FOOTER
 ----------------------------------------*/
+.contact-wa{ width: 80px;}
+
 .footer-top-area {
   background-color: #000;
-  padding: 80px 0 48px;
+  padding: 60px 0 20px;
   font-size: 14px;
 }
 
@@ -347,7 +365,7 @@ nav#t-logo{ height: 80px;}
 
 .footer-widget .text {
   color: #ffffff;
-  margin: 0 0 36px;
+  margin: 0;
 }
 
 .fw-info .social-title {
@@ -366,19 +384,12 @@ nav#t-logo{ height: 80px;}
 
 .fw-info .social li {
   display: inline-block;
+  padding-right: 50px;
+  margin-bottom: 30px;
 }
 
-.fw-info .social li a {
-  background: #55575a none repeat scroll 0 0;
-  border-radius: 100%;
-  color: #ffffff;
-  display: block;
-  font-size: 13px;
-  height: 33px;
-  line-height: 33px;
-  margin-right: 17px;
-  text-align: center;
-  width: 33px;
+.fw-info .social li img {
+  width: 70%;
 }
 
 .footer-widget {
@@ -482,67 +493,6 @@ nav#t-logo{ height: 80px;}
 }
 
 
-
-
-
-
-
-#footer .social-media {
-  background-color: #19222a;
-  text-align: center;
-  font-size: 0;
-  padding-top: 50px;
-  padding-bottom: 50px; 
-}
-#footer .social-media a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin-left: 5px;
-  margin-right: 5px;
-  background-color: #fff;
-  position: relative;
-  -webkit-border-radius: 50%;
-  -o-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-  transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  -ms-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-}
-#footer .social-media a i {
-  font-size: 14px;
-  color: #222222;
-  line-height: 40px;
-  transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  -ms-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-}
-#footer .social-media a:hover i { color: #fff; }
-#footer .social-media a.facebook:hover { background-color: #3b5998; }
-#footer .social-media a.instagram:hover { background-color: #f77737; }
-#footer .social-media a.twitter:hover { background-color: #1da1f2; }
-#footer .social-media a.linked:hover { background-color: #0077b5; }
-#footer .footer-text {
-  background-color: #0f1419;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
-}
-#footer .footer-text p {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0;
-  word-spacing: 2px;
-  color: #888;
-}
-
-
 /*---------------------------------------
                 SECTION
 ----------------------------------------*/
@@ -569,8 +519,14 @@ section {
   width: 80px;
   background-color: #34495e; }
 
-/* ====================== CLIENT NAV  ======================*/
-#kompor-induksi{padding-bottom: 20px;}
+/* ====================== KOMPOR INDUKSI  ======================*/
+#kompor-induksi{
+  padding-top: 50px; 
+  padding-bottom: 20px;
+  background-image: url('./marble-bg.jpg');
+  background-repeat:no-repeat;
+  background-position: center center;
+}
 #kompor-induksi h1{
   font: 400 35px 'Montserrat', Arial, Helvetica, sans-serif;
   color: #333333;
@@ -582,7 +538,7 @@ section {
   color: #999999;
   margin: 0 0 40px 0;
   line-height: 1.8;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-family: "SamsungOne-600", Arial, Helvetica, sans-serif;
   font-size: 18px ;
   text-align: center;
 }
@@ -591,210 +547,138 @@ section {
   padding-top: 50px;
 }
 
-#home-product-desc .left-content .the-box{
+#kompor-induksi .left-content .the-box{
   margin-bottom: 40px;
   text-align: right;
 }
-#home-product-desc .left-content .the-box:first-child{ padding-top: 80px; }
-#home-product-desc .right-content .the-box{
+#kompor-induksi .left-content .the-box:first-child{ padding-top: 50px; }
+#kompor-induksi .right-content .the-box{
   margin-bottom: 40px;
   text-align: left;
 }
-#home-product-desc .right-content .the-box:first-child{ padding-top: 80px; }
+#kompor-induksi .right-content .the-box:first-child{ padding-top: 50px; }
 
-#home-product-desc .left-content .the-box h1, #home-product-desc .right-content .the-box h1{
+#kompor-induksi .the-box h1{
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 16px;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-family: "SamsungOne-Bold", Arial, Helvetica, sans-serif;
   color: #333;
   margin-bottom: 10px;
 }
-#home-product-desc .left-content .the-box .desc, #home-product-desc .right-content .the-box .desc{
+#kompor-induksi .the-box .desc, #kompor-induksi .the-box .desc{
   font-size: 13px;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-family: "SamsungOne-600", Arial, Helvetica, sans-serif;
   color: #777;
   line-height: 2.1;
 }
 
-.client-nav, .home-category {
-  background: #ffffff none repeat scroll 0 0;
-  border-bottom: 2px solid transparent;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 5px 70px 0 rgba(0, 0, 0, 0.27);
-  box-shadow: 0 5px 70px 0 rgba(0, 0, 0, 0.27);
-  margin: 0 0 30px;
-  padding: 40px 26px 34px;
-  position: relative;
-  -webkit-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-}
-
-.home-category {
-  padding: 24px;
-}
-
-.client-nav:hover {
-  border-bottom: 2px solid #0085c5;
-}
-
-.client-nav .icon {
-  left: 28px;
-  position: absolute;
-  top: 37px;
-  font-size: 35px;
-  color: #393939;
-}
-
-.client-nav .content .title{
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 34px;
-  margin: 0 0 25px;
-  padding: 0 0 0 60px;
-  color: #393939;
-}
-
-.home-category .content .title  {
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 34px;
-  color: #393939;
-  text-align: center;
-  margin: 5px 0 0;
-}
-
-.client-nav .content p, .home-category .content p  {
-  font-size: 13px;
-  color: #393939;
-  font-weight: normal;
-  letter-spacing: 0;
-  line-height: 25px;
-}
-
-/* ====================== ABOUT US  ======================*/
-#about{
-  padding-top: 40px!important;
-  padding-bottom: 25px!important;
-}
-
-#about .section-title {
-  margin-bottom: 0px;
-}
-
-#about .simple-content {
-  margin-top: 30px;
-}
-
-#about .simple-content h1{
-  margin-bottom: 40px;
-}
-
-#choose {
-  background-color: #fcf4d6;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-#choose .left {
-  background-size: cover;
-  background-position: center;
-  -webkit-clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
-  clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
-  position: relative;
-}
-
-#choose .right{
-  color: #404040;
-  padding-top: 45px;
-  padding-bottom: 45px;
-}
-#choose h1.section-title{
-  font-size: 45px;
-  letter-spacing: -1px;
-  margin-bottom: 50px;
-  position: relative;
-  padding-bottom: 10px;
-  text-transform: capitalize;
-  word-spacing: 4px;
-}
-
-#choose h1.section-title:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 5px;
-  width: 80px;
-  background-color: #404040 ;
-}
-
-#choose .accordion .card {
-  background: transparent none repeat scroll 0 0;
-  border: 1px solid #404040!important;
-  border-radius: 0;
-  margin: 0 0 20px;
-  padding: 8px 24px;
-}
-
-#choose .accordion .card .card-header {
-  background: transparent none repeat scroll 0 0;
-  border: 0 none;
-  padding: 0;
-}
-
-#choose .accordion .card .card-header .mb-0 .btn {
-  color: #404040;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 22px;
-  padding: 0;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  width: 100%;
-}
-
-#choose .accordion .card .card-header .mb-0 .btn::after {
-  color: #404040;
-  content: "\f107";
-  font-family: "FontAwesome";
-  font-weight: 900;
-  position: absolute;
-  right: 0;
-  top: 3px;
-  transition: all 0.3s ease 0s;
-}
-
-#choose .accordion .card .collapse .card-body,#choose  .accordion .card .collapsing .card-body {
-  color: #404040;
-  letter-spacing: 0;
-  line-height: 20px;
-  font-size: 13px;
-}
-
-
 /* ====================== PRODUCTS ====================== 00d299 */
-#produk{ background-color: #70B8B4; color: #fff;}
-#produk p{ color: #fff; }
-#produk .k-625, #produk .k-60m, #produk .k-655, #produk .k-67{ margin-bottom: 100px; }
-#produk .prod-n {
+section.product-head{
+  padding-top: 50px;
+  background-color:#f4f4f4;
+  padding-bottom:30px;
+  color:black;
+}
+
+.our-products h2{
+  font-family: 'SamsungOne-600', Arial, Helvetica, sans-serif!important;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.our-products ul.sub-menu {
+  font-family: 'SamsungOne-600', Arial, Helvetica, sans-serif;
+  color: #000;
+  padding-left: 0px;
+}
+.our-products ul.sub-menu li{
+  display: inline-block;
+  line-height: 30px;
+}
+.our-products ul.sub-menu li:first-child{ margin-right: 50px; }
+.our-products ul.sub-menu li a{ color: #000; }
+/* .our-products ul.sub-menu li.active{ border-bottom: 3px solid #555; } */
+.our-products ul.sub-menu li:after{
+  display:block;
+  content: '';
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+.our-products ul.sub-menu li.ic:after{ border-bottom: solid 3px #BCD9C7; }
+.our-products ul.sub-menu li.ct:after{ border-bottom: solid 3px #E4BCBD; }
+.our-products ul.sub-menu li.clicked:after { transform: scaleX(1); }
+
+.our-products ul.sub-menu li.clicked a{ color: #555; }
+.our-products ul.sub-menu li a:hover{ color: #555;text-decoration: none; }
+
+.products.kompor-induksi{ background-color: #BCD9C7!important; color: #000;}
+.products.kitchenware{ background-color: #E4BCBD!important; color: #000;}
+.products .product{
+  webkit-box-shadow: 0 2px 6px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.1);
+  padding: 30px;
+  font-family: 'SamsungOne-600', Arial, Helvetica, sans-serif;
+  text-align: center;
+  background-color: #fff;
+}
+.product .cat_name{
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.product .p_name {
+  font-weight: 700;
+  font-family: 'SamsungOne-Bold', Arial, Helvetica, sans-serif;
+  font-size: 27px;
+  margin-bottom: 20px;
+}
+
+.product .price{
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.p_spec ul{
+  list-style: outside none none;
+  padding: 0;
+  margin: 0;
+}
+.p_spec li {
+  text-align: left;
+  font-size: 13px;
+  color: #636363;
+  margin: 0 0 4px;
+  padding-left: 35px;
+  position: relative;
+}
+.p_spec li::before {
+  background: #70B8B4 none repeat scroll 0 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 41%;
+  width: 21px;
+}
+.p_button a{width: 45%;}
+
+.products p{ color: #fff; }
+.products .k-625, .products .k-60m, .products .k-655, .products .k-67{ margin-bottom: 100px; }
+.products .prod-n {
   font-size: 36px;
   line-height: 40px;
   padding-left: 10px;
   margin-bottom: 40px;
 }
-#produk .prod-desc{ padding-left: 10px; }
+.products .prod-desc{ padding-left: 10px; }
 
-#produk .sub-title{
+.products .sub-title{
   position: relative;
   margin-bottom: 20px;
   font-size: 17px;
 }
-#produk .sub-title::after {
+.products .sub-title::after {
   background: #fff none repeat scroll 0 0;
   bottom: 0;
   content: "";
@@ -804,11 +688,11 @@ section {
   width: 20px;
 }
 
-#produk .t-text {
+.products .t-text {
   font-size: 14px;
   line-height: 25px;
 }
-#produk ul.t-text {list-style: outside; padding-left: 15px; }
+.products ul.t-text {list-style: outside; padding-left: 15px; }
 
 
 /* ====================== Contact US ======================*/
@@ -916,356 +800,104 @@ section#hubungi-kami{ padding-top: 0px!important;}
   background-image: none;
   border-color: #70B8B4!important;
 }
-
 .btn-outline-green:hover {
   color: #fff;
   background-color: #70B8B4;
   border-color: #70B8B4;
 }
 
+.btn-green {
+  color: #fff;
+  background-color: #70B8B4;
+  background-image: none;
+  border-color: #fff!important;
+}
+.btn-green:hover {
+  color: #70B8B4;
+  background-color: #fff;
+  border-color: #70B8B4!important;
+}
+
+.btn-outline-pink {
+  color: #E4BCBD;
+  background-color: transparent;
+  background-image: none;
+  border-color: #E4BCBD!important;
+}
+.btn-outline-pink:hover {
+  color: #fff;
+  background-color: #E4BCBD;
+  border-color: #E4BCBD;
+}
+
+.btn-pink {
+  color: #fff;
+  background-color: #E4BCBD;
+  background-image: none;
+  border-color: #fff!important;
+}
+.btn-pink:hover {
+  color: #E4BCBD;
+  background-color: #fff;
+  border-color: #E4BCBD!important;
+}
 
 /* --------------------------------------------
  *  Product + Service Center
  *----------------------------------------------- */
-
-.product-side-menu .product-side-menu-title{
-  border-bottom: none;
-  /* background-color: #363b4d; */
-  padding: 20px 10px;
-  text-align: center;
-  color: #000;
-  font-size: 16px!important; 
-}
-.product-side-menu .accordion{ border: 1px solid rgba(0, 0, 0, 0.125) }
-.product-side-menu .card{ border: none }
-.product-side-menu .card-header{ font-size: 13px; background: #fff; border-bottom: none}
-.product-side-menu .card-header a{ 
-  display: block;
-  -webkit-transition : all .2s ease-out;
-  -moz-transition    : all .2s ease-out;
-  transition         : all .2s ease-out;
-}
-.product-side-menu .card-header a{ color: #000; }
-.product-side-menu .card-header a:hover{ 
-  text-decoration: underline;
-  color: #1268a9;
-}
-.product-side-menu .card-header a.active { 
-  text-decoration: underline;
-  color: #000;
-  font-weight: 600;
-}
-.product-side-menu .card-temp-body{ padding: 0 25px; }
-.product-side-menu .card-body a{ color: #000;  padding: 0 5px; }
-.product-side-menu .card-body{ padding: 10px; border-top: 1px solid rgba(0, 0, 0, 0.125) }
-.product-side-menu .card-body .my-fa-ul{ 
-  list-style-type: none; 
-  padding-left: 0;
-  margin-bottom: 0px;
-}
-.product-side-menu .card-body .my-fa-ul li{ font-size: 13px; }
-.product-side-menu .card-body .my-fa-ul li i{ margin-right: 7px; font-size: 10px!important;}
-.product-side-menu .card-body .my-fa-ul li a.hover{
-  background-color: #1268a9; 
-  color: #fff;
+.p_detail{margin-bottom: 60px;}
+.p_detail .p_image{padding: 0 50px}
+.p_image_mobile{ display: none!important; }
+@media (max-width: 767px) {
+  .p_image_mobile{
+    display: block!important;
+    margin-bottom: 20px;
+  }
+  .p_image_nav, .p_image{ display: none!important; }
+} 
+.product-d-img-mobile .slick-prev:before, .product-d-img-mobile .slick-next:before{ color: #303030!important}
+.p_detail .p_desc .p_name{
+  font-weight: 700;
+  font-family: 'SamsungOne-Bold', Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  margin-bottom: 25px;
 }
 
-
-.product-list h2{
-  border-bottom: 1px solid #dbdbdb;
-  box-shadow: 0 1px 0 #dbdbdb;
-  padding-bottom: 20px;
-  color: #363b4d;
-}
-
-.pd-box {
-  width: 100%;
-  float: left;
-  padding: 15px;
-  margin: 0;
-  background: #fff;
-  color: #484848;
-}
-
-.pd-box figure{
-display: block;
-overflow: hidden;
-margin-bottom: 10px;
-position: relative;
-}
-
-.pd-box figure img{
--webkit-transition : all .5s ease-out;
--moz-transition    : all .5s ease-out;
-transition         : all .5s ease-out;
-}
-
-.pd-box figure:hover img{
-transform: scale(1.1);
-}
-
-.pd-box figure:hover a.show-detail {
-  bottom: 20px;
-}
-
-.pd-box figure a.show-detail{
-  position: absolute;
-  bottom: -50px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transition : all .3s ease-out;
-  -moz-transition    : all .3s ease-out;
-  transition         : all .3s ease-out;
-  color: #000;
-  border-color: #000;
-  background-color: #fff;
-  background-image: none;
-  font-size: 13px;
-  min-width: 120px;
-  border-radius: 20px;
-}
-
-.pd-box figure a.show-detail:hover{
-  background-color: #000;
-  color: #fff;
-}
-
-.pd-box .product_extra a{
-  color: #fff;
-}
-
-.pd-box .product_extra {
-  position: absolute;
-  top: 15px;
-  left: 85px;
-  width: 66px;
-  height: 36px;
-  text-align: center;
-  color: #fff!important;
-  -webkit-transform-origin: top left;
-  -moz-transform-origin: top left;
-  -ms-transform-origin: top left;
-  -o-transform-origin: top left;
-  transform-origin: top left;
-  transform: rotate(90deg);
-  font-size: 17px;
-  padding-top: 5px;
-}
-
-.pd-box .product_sale {
-  background: #e95a5a;
-}
-
-.pd-box .pd-box-title h4{
-  columns: #999;
-  font-size: 18px;
-}
-
-.pd-box .pd-box-title h4 a {
-  -webkit-transition : all .4s ease-out;
-  -moz-transition    : all .4s ease-out;
-  transition         : all .4s ease-out;
-  color: #999;
-  font-size: 14px;
-}
-.pd-box .pd-box-title h4 a:hover{
-  text-decoration: none;
-  color: #007bff;
-}
-
-.pd-box .pd-box-desc{
-  font-size: 13px;
-  color: #484848;
-  margin-bottom: 20px;
-}
-
-.pd-box .pd-box-detail a{
-  -webkit-transition : all .3s ease-out;
-  -moz-transition    : all .3s ease-out;
-  transition         : all .3s ease-out;
-  color: #ff6262;
-  position: relative;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-.pd-box .pd-box-detail > a:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #ff6262;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
-}
-
-.pd-box .pd-box-detail > a:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
-}
-
-.tg-featuretag:before {
-  top: 0;
-  left: 100%;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  border-left: 10px solid #f91942;
-}
-
-.tg-themetag {
-  top: 40px;
-  left: 27px;
-  z-index: 2;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 10px;
-  position: absolute;
-  background: #f91942;
-  padding: 5px 3px 3px 10px;
-  text-transform: uppercase;
-}
-
-.tg-featuretag:before, .tg-featuretag:after {
-  width: 0;
-  height: 0;
-  content: '';
-  position: absolute;
-}
-
-.tg-featuretag:after {
-  top: 100%;
-  left: 0;
-  border-top: 5px solid #b10f2c;
-  border-left: 5px solid transparent;
-}
-
-.product-detail{
-  margin-top: 30px;
-  font-size: 13px;
-  color: #666;
-}
-.product-detail h4.detail-name{ color: #000; margin-bottom: 15px; }
-.product-detail span.price{ font-size: 16px; color: #000; }
-.product-detail p { font-size: 13px; margin-top: 15px; color: #666;}
-
-#carousel img { opacity: .5; cursor: pointer; }
-#carousel img:hover { opacity: 1; }
-#carousel .flex-active-slide img{
-  opacity: 1;
-  cursor: default;
-}
-
-.product-detail .product-desc{
-  margin-top: 50px;
-}
-.product-detail .product-desc .nav-tabs{
-  margin: 0!important;
-  border: none;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  width: 100%;
-}
-.product-detail .product-desc .nav-tabs li {
-  width: 25%;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 14px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-}
-.product-detail .product-desc .nav-tabs li a {
-  width: 100%;
-  margin: 0 10px 0 0;
-  border: none;
-  padding: 1.5em 1em!important;
-  border: none;
-  display: block;
-  color: #4d4d4d;
-  background: #fafafa;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  transition: .5s;
-}
-.product-detail .product-desc .nav-tabs li a:hover{ 
-  text-decoration: none; 
-  background-color: #eee;
-  border-color: #eee #eee #ddd; 
+.p_icon{ margin-bottom: 60px;}
+.p_icon .border_even{ border-right: solid 2px #e3e3e3; margin-bottom: 20px;}
+.p_icon .border_odd{ border-right: solid 2px #e3e3e3; margin-bottom: 20px;}
+@media (max-width: 767px) {
+  .border_even{
+    border-right: none!important;
+  }
+  .feature_detail{margin-top: 30px;}
 } 
 
-.product-detail .product-desc .nav-tabs li a.active {
-  background: #1268a9;
-  border: none;
-  color: #fff;
-  bottom: 0!important;
-  position: relative;
+.p_icon .p_icon_title { text-align: center; font-size: 15px;  margin-bottom: 10px;}
+.p_icon img{ padding: 0 30px; }
+
+.p_feature_detail{ margin-bottom: 100px; padding: 0 50px!important}
+.p_feature_detail .p_feature_detail_title{
+  font-size: 40px;
+  margin-bottom: 25px;
+  text-align: center;
 }
-
-.product-detail .product-desc .nav-tabs li a.active:after {
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  right: 0;
-  content: '';
-  width: 0;
-  height: 0;
-  margin: 0 auto;
-  border-style: solid;
-  border-width: 10px 10px 0;
-  border-color: #1268a9 transparent transparent transparent;
-  transition: .5s;
+.p_feature_detail .p_feature_detail_desc{
+  padding: 0 30px;
+  font-size: 16px;
+  text-align: center;
 }
-
-.product-detail .product-desc .tab-content {
-  padding: 3em 2em!important;
-  background: #fff;
-  border: 1px solid #e6e6e6;
-  margin-top: 20px;
+.p_spec_feature{
+  font-family: 'SamsungOne-600', Arial, Helvetica, sans-serif;
+  background-color: #d9d9d9;
+  padding: 40px 50px!important;
 }
-
-
-.products-detail .related-product{
-  margin-bottom: 35px;
-  position: relative;
+.spec_detail h2, .feature_detail h2{
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-family: 'SamsungOne-Bold', Arial, Helvetica, sans-serif;
 }
-
-.products-detail .related-product h3{
-  font-size: 25px;
-  border-bottom: 1px solid #dbdbdb;
-  box-shadow: 0 1px 0 #dbdbdb;
-  padding-bottom: 20px;
-  color: #363b4d;
-}
- 
- 
-
+.spec_detail .detail, .feature_detail .detail{ font-size: 14px;margin-bottom: 40px; }
 
 /* --------------------------------------------
  *  breadcrumb

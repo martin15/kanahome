@@ -9,7 +9,7 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def new
     @product = Product.new
-    @categories = Category.child_categories
+    @categories = Category.all
     @product.product_images.build
   end
 
@@ -19,7 +19,7 @@ class Admin::ProductsController < Admin::ApplicationController
       flash[:notice] = 'product was successfully create.'
       redirect_to admin_products_path
     else
-      @categories = product.child_categories
+      @categories = Category.all
       @product.product_images.build
       flash[:error] = "product failed to create"
       render :action => :new
@@ -27,7 +27,7 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def edit
-    @categories = Category.child_categories
+    @categories = Category.all
     if @product.product_images.blank?
       @product.product_images.build
     end
@@ -38,7 +38,7 @@ class Admin::ProductsController < Admin::ApplicationController
       flash[:notice] = 'product was successfully updated.'
       redirect_to admin_products_path(page: params[:product][:page])
     else
-      @categories = Category.child_categories
+      @categories = Category.all
       if @product.product_images.blank?
         @product.product_images.build
       end
@@ -56,7 +56,8 @@ class Admin::ProductsController < Admin::ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :price, :short_description, :description, :category_id,
+      params.require(:product).permit(:name, :price, :short_description, :description, 
+                                      :specification, :feature, :category_id,
                                       product_images_attributes: [:id, :image, :_destroy])
     end
 
@@ -69,6 +70,6 @@ class Admin::ProductsController < Admin::ApplicationController
     end
 
     def validate_page
-      params[:product][:page] = params[:product][:page].to_i <= 0 ? 0 : params[:product][:page]
+      params[:product][:page] = params[:product][:page].to_i <= 0 ? 1 : params[:product][:page]
     end
 end

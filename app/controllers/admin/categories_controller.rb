@@ -3,13 +3,13 @@ class Admin::CategoriesController < Admin::ApplicationController
   before_action :validate_page, :only => [:update, :destroy]
 
   def index
-    @categories = Category.parent_categories.page(params[:page]).per(2)
+    @categories = Category.page(params[:page]).per(20)
     @no = paging(20)
+    puts @no.inspect
   end
 
   def new
     @category = Category.new
-    @parent_categories = Category.parent_categories
   end
 
   def create
@@ -18,14 +18,12 @@ class Admin::CategoriesController < Admin::ApplicationController
       flash[:notice] = 'Category was successfully create.'
       redirect_to admin_categories_path
     else
-      @parent_categories = Category.parent_categories
       flash[:error] = "Category failed to create"
       render :action => :new
     end
   end
 
   def edit
-    @parent_categories = Category.parent_categories
   end
 
   def update
@@ -33,7 +31,6 @@ class Admin::CategoriesController < Admin::ApplicationController
       flash[:notice] = 'Category was successfully updated.'
       redirect_to admin_categories_path(page: params[:category][:page])
     else
-      @parent_categories = Category.parent_categories
       flash[:error] = "Category failed to update"
       render :action => :edit
     end
@@ -48,7 +45,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   private
 
     def category_params
-      params.require(:category).permit(:name, :parent_id)
+      params.require(:category).permit(:name)
     end
 
     def find_category
@@ -60,6 +57,6 @@ class Admin::CategoriesController < Admin::ApplicationController
     end
 
     def validate_page
-      params[:category][:page] = params[:category][:page].to_i <= 0 ? 0 : params[:category][:page]
+      params[:category][:page] = params[:category][:page].to_i <= 0 ? 1 : params[:category][:page]
     end
 end

@@ -16,4 +16,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( 
   application.js slick.js owl.carousel.js ckeditor/*
   
-  style.css slick.css owl.carousel.css owl.theme.css animate.css)
+  style.css slick.css owl.carousel.css owl.theme.css animate.css slick-theme lunar)

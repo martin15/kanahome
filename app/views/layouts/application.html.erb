@@ -54,9 +54,9 @@
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul id="menu" class="nav links" >
-            <li class="active nav-item"><%= link_to "Home", root_path(anchor: "home") %></li>
+            <li class="<%= 'active' if action_name != "product_detail" %>  nav-item"><%= link_to "Home", root_path(anchor: "home") %></li>
             <li class="nav-item"><%= link_to "Tentang Kompor", root_path(anchor: "kompor-induksi") %></li>
-            <li class="nav-item"><%= link_to "Produk", root_path(anchor: "produk") %></li>
+            <li class="<%= 'active' if action_name == "product_detail" %> nav-item"><%= link_to "Produk", root_path(anchor: "produk") %></li>
             <li class="nav-item"><%= link_to "Hubungi Kami", root_path(anchor: "hubungi-kami") %></li>
           </ul>
         </div>
@@ -65,26 +65,38 @@
 
     <%= yield %>
 
+    <div class="fixed-bottom text-right">
+      <%= link_to (image_tag "icon-wa.png", class: "img-fluid contact-wa", alt: "Kanahome kompor indusksi"),
+                  "https://api.whatsapp.com/send?phone=+628112263767", target: "_blank" %>
+    </div>
+
     <footer>
       <div class="footer-top-area">
         <div class="container">
           <div class="row">
-            <div class="col-lg-5 col-md-7 col-6">
+            <div class="col-lg-3 col-md-7 col-6">
               <div class="fw-info footer-widget">
                 <div class="flogo">
                   <%= image_tag "Kanahome-Logo-white.png", class: "logo2 img-fluid", style: "width:200px" %>
                 </div>
-                <p class="text">&nbsp;</p>
-                <h4 class="social-title">Kunjungi Kami</h4>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-6">
+              <div class="fw-info footer-widget">
+                <h2 class="title">Visit Us</h2>
                 <ul class="social">
-                  <li class="facebook"><%= link_to (fa_icon "facebook"), "#" %></a></li>
-                  <li class="instagram"><%= link_to (fa_icon "instagram"), "https://www.instagram.com/kanahome.id/", target: "_blank" %></a></li>
+                  <li><%= link_to (image_tag "icon-shopee.png", class: "img-fluid"), 
+                                  "https://shopee.co.id/elektrigo", target: "blank" %></li>
+                  <li><%= link_to (image_tag "icon-tokopedia.png", class: "img-fluid"), 
+                                  "https://www.tokopedia.com/kanahome-id", target: "blank" %></li>
+                  <li class="mb-0"><%= link_to (image_tag "icon-instagram.png", class: "img-fluid"), 
+                                  "https://www.instagram.com/kanahome.id/", target: "blank" %></li>
                 </ul>
               </div>
             </div>
             <div class="col-lg-3 col-md-5 col-6">
               <div class="fw-links footer-widget">
-                <h2 class="title">Useful Links</h2>
+                <h2 class="title">About Us</h2>
                 <ul class="links">
                   <li><%= link_to "Home", root_path(anchor: "home") %></li>
                   <li><%= link_to "Tentang Kompor", root_path(anchor: "kompor-induksi") %></li>
@@ -93,7 +105,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-lg-4 col-md-5 col-12">
+            <div class="col-lg-3 col-md-5 col-12">
               <div class="fw-contact footer-widget">
                 <h2 class="title">Contact info</h2>
                 <p class="text">
@@ -123,29 +135,5 @@
         </div>
       </div>
     </footer>
-    <!-- footer
-    <footer id="footer">
-        <div class="social-media">
-            <div class="container">
-              <a href="https://www.facebook.com/remon.fawzi1" class="facebook">
-                <i class="fa fa-facebook-f add-transition"></i>
-              </a>
-              <a href="https://www.instagram.com/remonfawzi/" class="instagram">
-                <i class="fa fa-instagram add-transition"></i>
-              </a>
-              <a href="https://twitter.com/rem0nfawzi" class="twitter">
-                <i class="fa fa-twitter add-transition"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/rem0nfawzi/" class="linked">
-                <i class="fa fa-linkedin add-transition"></i>
-              </a>
-            </div>
-        </div>
-        <div class="footer-text">
-            <div class="container">
-                <p>all copyrights reserved © 2018</p>
-            </div>
-        </div>
-    </footer> -->
   </body>
 </html>

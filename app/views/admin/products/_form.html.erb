@@ -9,6 +9,7 @@
   <%= f.error_notification %>
   <%= f.input :category_id, collection: @categories %>
   <%= f.input :name %>
+  <%= f.input :price %>
   <% index = 0%>
   <%= f.simple_fields_for :product_images do |p| %>
     <% if p.object.new_record? %>
@@ -23,26 +24,39 @@
                 <%= link_to "Add New Image", new_admin_product_image_path(@product.id), 
                             class: "btn btn-success", remote: true %>
               </div>
+              <div class="row">
       <% end %>
       <% index +=1 %>
-
-      <span class="product-form-image <%= p.object.id.to_i == params[:failed_product_image].to_i ? 'image-error' : 'image-no-error' %>">
-        <%= image_tag p.object.image.url(:thumb), class: "img-fluid" %>
-        <%= link_to "edit", edit_admin_product_image_path(@product.id, p.object.id),
-                    class: "btn btn-primary", remote: true %>
-        <%= link_to "delete", admin_product_image_path(@product.id, p.object.id),  
-                    class: "btn btn-danger", :method => :delete, data: {:confirm => "Are you sure?"} %>
-      </span>
-
+      <div class="col-6 no-p-lr">
+        <div class="row product-form-image <%= p.object.id.to_i == params[:failed_product_image].to_i ? 'image-error' : 'image-no-error' %>">
+          <div class="col-6 no-p-lr">
+            <%= image_tag p.object.image.url(:thumb), class: "img-fluid" %>
+          </div>
+          <div class="col-6 no-p-lr">
+            <%= link_to "edit", edit_admin_product_image_path(@product.id, p.object.id),
+                        class: "btn btn-primary mb-2", remote: true %>
+            <%= link_to "delete", admin_product_image_path(@product.id, p.object.id),  
+                        class: "btn btn-danger mb-2", :method => :delete, data: {:confirm => "Are you sure?"} %>
+            <% if !p.object.is_primary %>
+              <%= link_to "Set As Primary", set_as_primary_admin_product_path(@product.id, p.object.id),
+                          class: "btn btn-primary mb-2" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <% if index == f.object.product_images.size.to_i %>
+            </div>
           </div>
         </div>
       <% end %>
 
     <% end %>
   <% end %>
-  <%= f.input :short_description, as: :text %>
-  <%= f.input :description, as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } } %>
+  <%= f.input :short_description, as: :text, :input_html => {:rows => 7} %>
+  <%#= f.input :description, as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } } %>
+  <%= f.input :specification, as: :text, :input_html => {:rows => 7} %>
+  <%= f.input :feature, as: :text, :input_html => {:rows => 7} %>
+
   <%= f.input :page, :as => :hidden, :input_html => { :value => params[:page] || 1 } %>
   <div class="form-group row mb-0">
     <div class="col-sm-9 offset-sm-3">
