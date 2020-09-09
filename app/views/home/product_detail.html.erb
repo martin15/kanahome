@@ -51,7 +51,7 @@
             <% temp_class = "" if (x + 1) == @feature_details.size %>
             <div class="col-6 col-md-3 <%= temp_class %>">
               <div class="p_icon_title"><%= detail.icon_title %></div>
-              <%= image_tag detail.icon.url(:thumb), class: "img-fluid" %>
+              <%= image_tag detail.icon.url, class: "img-fluid" %>
             </div>
           <% end %>
         </div>
@@ -62,7 +62,7 @@
         <% temp_class_detail = (x % 2) == 0 ? "order-md-2 order-1" : "order-md-1 order-2" %>
         <div class="col-12 p_feature_detail">
           <div class="row">
-            <div class="col-12 col-md-5 <%= temp_class_image %>"><%= image_tag detail.image.url(:medium), class: "img-fluid" %></div>
+            <div class="col-12 col-md-5 <%= temp_class_image %>"><%= image_tag detail.image.url, class: "img-fluid" %></div>
             <div class="col-12 col-md-7 <%= temp_class_detail %>">
               <div class="p_feature_detail_title"><%= detail.title %></div>
               <div class="p_feature_detail_desc"><%= raw(detail.description) %></div>
