@@ -55,7 +55,7 @@
             <% temp_class = "" if (x + 1) == @feature_details.size %>
             <div class="col-6 col-md-3 <%= temp_class %>">
               <div class="p_icon_title"><%= detail.icon_title %></div>
-              <%= image_tag detail.icon.url, class: "img-fluid" %>
+              <%= image_tag detail.icon.url(:thumb), class: "img-fluid" %>
             </div>
           <% end %>
         </div>
