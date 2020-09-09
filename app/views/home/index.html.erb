@@ -23,13 +23,17 @@
 <!-- header -->
 <%# adjust_header = current_user.nil? ? "" : "logged-banner" %>
 <section id="home">
-  <div class="banner owl-carousel owl-theme">
-    <% @banners.each do |banner| %>
-      <div class="item">
-        <% alt = banner.alt.blank? ? banner.image.file.filename : banner.alt %>
-        <%= image_tag banner.image.url, alt: alt  %>
+  <div class="container banner-container">
+    <div class="row no-p-lr">
+      <div class="col-12 no-p-lr banner owl-carousel owl-theme">
+        <% @banners.each do |banner| %>
+          <div class="item">
+            <% alt = banner.alt.blank? ? banner.image.file.filename : banner.alt %>
+            <%= image_tag banner.image.url, alt: alt  %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </section>
 
@@ -44,7 +48,7 @@
         <%= link_to "KLIK DISINI", kompor_induksi_path, class: "btn btn-green" %>
       </div>
     
-      <div class="col-md-4 col-3 left-content">
+      <div class="col-md-4 col-6 order-2  order-md-1 left-content">
         <div class="the-box">
           <h1>Lebih Aman</h1>
           <div class="desc">
@@ -65,12 +69,12 @@
         </div>
       </div>
 
-      <div class="col-md-4 col-6">
+      <div class="col-md-4 col-12 order-1 order-md-2">
         <%= image_tag "kompor-kanahome.gif", class: "img-fluid mb-5 mx-auto d-block",
                       alt: "Kanahome, kompor induksi, kitchenware" %>
       </div>
 
-      <div class="col-md-4 col-3 right-content">
+      <div class="col-md-4 col-6 order-3 right-content">
         <div class="the-box">
           <h1>Masak Lebih Cepat</h1>
           <div class="desc">
@@ -90,9 +94,9 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-8 text-center mb-5">
+      <div class="col-12 col-md-8 order-4 text-center mb-5">
         <div class="the-box">
-          <h1>Hemat, Harga Ekonimis, Garansi Terjamin</h1>
+          <h1>Hemat, Harga Ekonomis, Garansi Terjamin</h1>
           <div class="desc">
             Terbukti biaya pemakaian listrik kompor induksi lebih hemat 15% lho! 
             Apalagi kompor induksi KANAhome harganya ekonomis tapi tetap kualitas bagus dan 
@@ -120,9 +124,9 @@
 
 <section class="products kompor-induksi">
   <div class="container">
-    <div class="row">
+    <div class="row row-eq-heigh">
       <% @kompor_induksi_products.each do |product| %>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <div class="product">
             <%= image_tag product.primary_image, class: "img-fluid mb-4" %>
             <div class="cat_name"><%= product.category_name %></div>
@@ -134,7 +138,7 @@
             <div class="p_spec">
               <ul>
                 <% product.short_description.split("\n").each do |desc| %>
-                  <li><%= desc %></li>
+                  <li><%= raw desc %></li>
                 <% end %>
               </ul>
             </div>
@@ -207,7 +211,7 @@
                   <span class="title">Find Us</span>
                   <span class="details">
                     MayFair Building, Lantai 1<br />
-                    Jl. Sukajadi No.228, Bandung 40162<br />
+                    Jl. Sukajadi No.228, Bandung 40153<br />
                     Jawa Barat, Indonesia
                   </span>
                 </li>

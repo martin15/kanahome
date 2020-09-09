@@ -31,6 +31,7 @@
             </div>
           </div>
           <div class="col-12 col-md-5 p_desc">
+            <div class="cat_name"><%= @product.category_name %></div>
             <div class="p_name"><%= @product.name %></div>
             <div class="price">
               <%= number_to_currency(@product.price, unit: 'Rp ', separator: ',', delimiter: '.') %>
@@ -48,7 +49,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-8 p_icon">
+      <div class="col-12 col-md-12 p_icon">
         <div class="row">
           <% @feature_details.each_with_index do |detail, x| %>
             <% temp_class = (x % 2) == 0 ? "border_odd" : "border_even" %>
@@ -67,7 +68,7 @@
         <div class="col-12 p_feature_detail">
           <div class="row">
             <div class="col-12 col-md-5 <%= temp_class_image %>"><%= image_tag detail.image.url, class: "img-fluid" %></div>
-            <div class="col-12 col-md-7 <%= temp_class_detail %>">
+            <div class="col-12 col-md-7 my-auto <%= temp_class_detail %>">
               <div class="p_feature_detail_title"><%= detail.title %></div>
               <div class="p_feature_detail_desc"><%= raw(detail.description) %></div>
             </div>
@@ -75,8 +76,8 @@
         </div>
       <% end %>
 
-      <% if !@product.specification.blank? && !@product.feature.blank? %>
-        <div class="col-12 p_spec_feature">
+      <% if !@product.specification.blank? || !@product.feature.blank? %>
+        <div class="col-12 p_spec_feature mb-4">
           <div class="row">
             <% unless @product.specification.blank? %>
               <div class="col-12 col-md-6 spec_detail">
@@ -101,6 +102,9 @@
           </div>
         </div>
       <% end %>
+      <div class="col-12 text-center">
+        <%= link_to "<< Back ", root_path %>
+      </div>
 
     </div>
   </div>

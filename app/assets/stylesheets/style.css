@@ -29,6 +29,16 @@ p {color: #000;}
 strong { font-weight: 700!important; }
 
 .no-p-lr{ padding-left: 0!important; padding-right: 0!important;}
+
+@media (min-width: 1200px) {
+  .banner-container {
+    max-width: 1235px!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+  } 
+}
+banner-container
+
 /*---------------------------------------
                 NAV
 ----------------------------------------*/
@@ -577,7 +587,7 @@ section {
 /* ====================== PRODUCTS ====================== 00d299 */
 section.product-head{
   padding-top: 50px;
-  background-color:#f4f4f4;
+  background-color:#f0f0f0;
   padding-bottom:30px;
   color:black;
 }
@@ -621,6 +631,8 @@ section.product-head{
   font-family: 'SamsungOne-600', Arial, Helvetica, sans-serif;
   text-align: center;
   background-color: #fff;
+  margin-bottom: 30px;
+  height: 100%;
 }
 .product .cat_name{
   font-size: 13px;
@@ -874,7 +886,7 @@ section#hubungi-kami{ padding-top: 0px!important;}
 } 
 
 .p_icon .p_icon_title { text-align: center; font-size: 15px;  margin-bottom: 10px;}
-.p_icon img{ padding: 0 30px; }
+.p_icon img{ padding: 0 75px; }
 
 .p_feature_detail{ margin-bottom: 100px; padding: 0 50px!important}
 .p_feature_detail .p_feature_detail_title{
@@ -887,6 +899,7 @@ section#hubungi-kami{ padding-top: 0px!important;}
   font-size: 16px;
   text-align: center;
 }
+.p_feature_detail .p_feature_detail_desc p{ margin-bottom: 0}
 .p_spec_feature{
   font-family: 'SamsungOne-600', Arial, Helvetica, sans-serif;
   background-color: #d9d9d9;
