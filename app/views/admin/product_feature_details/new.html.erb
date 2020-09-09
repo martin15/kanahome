@@ -23,7 +23,7 @@
                     wrapper_mappings: { 
                       check_boxes: :horizontal_collection, 
                       file:          :horizontal_file } do |f| %>
-          <%= render :partial => 'form' %>
+          <%= render :partial => 'form', locals: {f: f}  %>
         <% end %>
       </div>
     </div>
