@@ -32,6 +32,10 @@
           </div>
           <div class="col-12 col-md-5 p_desc">
             <div class="p_name"><%= @product.name %></div>
+            <div class="price">
+              <%= number_to_currency(@product.price, unit: 'Rp ', separator: ',', delimiter: '.') %>
+            </div>
+            <hr />
             <div class="p_spec mb-4">
               <ul>
                 <% @product.short_description.split("\n").each do |desc| %>
