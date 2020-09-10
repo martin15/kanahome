@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
 
   def index
-    @banners = Banner.all
+    @web_banners = Banner.where("b_type = 'web' or b_type = '' or b_type is null ")
+    @mobile_banners = Banner.where("b_type = 'mobile'")
+
     @contact = Contact.new
     @kompor_induksi = Category.find_by_permalink('kompor-induksi')
     @kitchenware = Category.find_by_permalink('kitchenware')

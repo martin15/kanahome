@@ -11,6 +11,7 @@ class Admin::ProductsController < Admin::ApplicationController
     @product = Product.new
     @categories = Category.all
     @product.product_images.build
+    @compatibility = Product::COMPATIBILITY
   end
 
   def create
@@ -21,6 +22,7 @@ class Admin::ProductsController < Admin::ApplicationController
     else
       @categories = Category.all
       @product.product_images.build
+      @compatibility = Product::COMPATIBILITY
       flash[:error] = "product failed to create"
       render :action => :new
     end
@@ -31,6 +33,7 @@ class Admin::ProductsController < Admin::ApplicationController
     if @product.product_images.blank?
       @product.product_images.build
     end
+    @compatibility = Product::COMPATIBILITY
   end
 
   def update
@@ -42,6 +45,7 @@ class Admin::ProductsController < Admin::ApplicationController
       if @product.product_images.blank?
         @product.product_images.build
       end
+      @compatibility = Product::COMPATIBILITY
       flash[:error] = "product failed to update"
       render :action => :edit
     end
@@ -56,8 +60,8 @@ class Admin::ProductsController < Admin::ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :price, :short_description, :description, 
-                                      :specification, :feature, :category_id,
+      params.require(:product).permit(:name, :price, :short_description, :description,
+                                      :specification, :feature, :category_id, compatibility: [],
                                       product_images_attributes: [:id, :image, :_destroy])
     end
 

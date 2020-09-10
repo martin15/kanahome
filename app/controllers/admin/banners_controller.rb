@@ -8,6 +8,7 @@ class Admin::BannersController < Admin::ApplicationController
 
   def new
     @banner = Banner.new
+    @types = Banner::TYPE
   end
 
   def create
@@ -16,12 +17,14 @@ class Admin::BannersController < Admin::ApplicationController
       flash[:notice] = 'Banner was successfully create.'
       redirect_to admin_banners_path
     else
+      @types = Banner::TYPE
       flash[:error] = "Banner failed to create"
       render :action => :new
     end
   end
 
   def edit
+    @types = Banner::TYPE
   end
 
   def update
@@ -29,6 +32,7 @@ class Admin::BannersController < Admin::ApplicationController
       flash[:notice] = 'Banner was successfully updated.'
       redirect_to admin_banners_path
     else
+      @types = Banner::TYPE
       flash[:error] = "Banner failed to update"
       render :action => :edit
     end
@@ -43,7 +47,7 @@ class Admin::BannersController < Admin::ApplicationController
   private
 
     def banner_params
-      params.require(:banner).permit(:image, :url, :alt )
+      params.require(:banner).permit(:image, :url, :alt, :b_type )
     end
 
     def find_banner

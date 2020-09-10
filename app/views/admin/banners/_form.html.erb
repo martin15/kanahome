@@ -5,6 +5,7 @@
 <%= simple_form_for [:admin, @banner], html: {multipart: true}, wrapper: :horizontal_form,
                     wrapper_mappings: { file: :horizontal_file }  do |f| %>
   <%= f.error_notification %>
+  <%= f.input :b_type, collection: @types %>
   <%= f.input :image, as: :file  %>
   <div class="form-group row file optional input-note">
     <label class="col-sm-3 form-control-label file optional">&nbsp;</label>

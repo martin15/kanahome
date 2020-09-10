@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+  serialize :compatibility, Array
+  COMPATIBILITY = ["Kompor Induksi", "Kompor Gas", "Kompor Listrik", 
+                   "Panci 68", "Panci K655 K625", "Wajan 68"]
+
   has_permalink :name, :update => true
 
   has_many :product_images, inverse_of: :product

@@ -5,7 +5,7 @@
 
 <script>
   jQuery(document).ready(function($) {
-    $('.banner').owlCarousel({
+    $('.banner, .banner-mobile').owlCarousel({
       animateOut: 'fadeOut',
       animateIn: 'fadeIn',
       loop: true,
@@ -25,8 +25,16 @@
 <section id="home">
   <div class="container banner-container">
     <div class="row no-p-lr">
-      <div class="col-12 no-p-lr banner owl-carousel owl-theme">
-        <% @banners.each do |banner| %>
+      <div class="col-12 no-p-lr banner owl-carousel owl-theme d-none d-sm-block d-md-block d-lg-block d-xl-block">
+        <% @web_banners.each do |banner| %>
+          <div class="item">
+            <% alt = banner.alt.blank? ? banner.image.file.filename : banner.alt %>
+            <%= image_tag banner.image.url, alt: alt  %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 no-p-lr banner-mobile owl-carousel owl-theme d-block d-sm-none">
+        <% @mobile_banners.each do |banner| %>
           <div class="item">
             <% alt = banner.alt.blank? ? banner.image.file.filename : banner.alt %>
             <%= image_tag banner.image.url, alt: alt  %>
@@ -70,7 +78,7 @@
       </div>
 
       <div class="col-md-4 col-12 order-1 order-md-2">
-        <%= image_tag "kompor-kanahome.gif", class: "img-fluid mb-5 mx-auto d-block",
+        <%= image_tag "kompor-kanahome.gif", class: "img-fluid mb-5 mx-auto d-block gif-mobile",
                       alt: "Kanahome, kompor induksi, kitchenware" %>
       </div>
 
@@ -145,7 +153,7 @@
             <hr />
             <div class="p_button">
               <%= link_to "Detail", product_detail_path(product.permalink), class: "btn btn-outline-green" %>
-              <%= link_to "Beli Sekarang", "#", class: "btn btn-pink",
+              <%= link_to "Beli Sekarang", "javascript:void(0)", class: "btn btn-pink",
                           data: {toggle: "modal", target: "#shop_modal"} %>
             </div>
           </div>
@@ -171,14 +179,14 @@
             <div class="p_spec">
               <ul>
                 <% product.short_description.split("\n").each do |desc| %>
-                  <li><%= desc %></li>
+                  <li><%= raw desc %></li>
                 <% end %>
               </ul>
             </div>
             <hr />
             <div class="p_button">
               <%= link_to "Detail", product_detail_path(product.permalink), class: "btn btn-green" %>
-              <%= link_to "Beli Sekarang", "#", class: "btn btn-outline-pink",
+              <%= link_to "Beli Sekarang", "javascript:void(0)", class: "btn btn-outline-pink",
                           data: {toggle: "modal", target: "#shop_modal"} %>
             </div>
           </div>
@@ -282,48 +290,7 @@
   </div>
 </section>
 
-<!-- Modal -->
-<div class="modal fade"  id="shop_modal"  tabindex="-1" role="dialog"
-     aria-labelledby="demoModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-    <div class="modal-content">
-      <div class="container-fluid">
-        <button type="button" class="close" data-dismiss="modal"
-                aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="pt-sm-3 mb-4 text-center">Beli Sekarang</h2>
-          </div>
-          <div class="col-md-12 text-center" style="padding:0 170px 20px">
-            <%= link_to (image_tag "icon-shopee.png", class: "img-fluid"), 
-                                  "https://shopee.co.id/elektrigo", target: "blank" %>
-          </div>
-          <div class="col-md-12 text-center" style="padding:0 170px 50px">
-            <%= link_to (image_tag "icon-tokopedia.png", class: "img-fluid"), 
-                                  "https://www.tokopedia.com/kanahome-id", target: "blank" %>
-          </div>
-          <!--
-            <div class="col-md-6 bg-img rounded-left m-h-60 d-none d-sm-block" 
-                 style="background-image: url('https://images.unsplash.com/photo-1538943963832-856b555cd29b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
-            </div>
-            <div class="col-md-6 py-5 px-sm-5 ">
-              <h4 class="pt-sm-3 mb-4">Beli Sekarang</h4>
-              <p class="text-muted">
-                  <%= link_to (image_tag "icon-shopee.png", class: "img-fluid"), 
-                                  "https://shopee.co.id/elektrigo", target: "blank" %>
-              </p>
-              <p>
-                <%= link_to (image_tag "icon-tokopedia.png", class: "img-fluid"), 
-                                  "https://www.tokopedia.com/kanahome-id", target: "blank" %>
-              </p>-->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Ends -->
+<%= render partial: "modal"  %>
 
 <script>
   $(document).ready(function () {

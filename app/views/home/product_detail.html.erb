@@ -37,12 +37,21 @@
               <%= number_to_currency(@product.price, unit: 'Rp ', separator: ',', delimiter: '.') %>
             </div>
             <hr />
-            <div class="p_spec mb-4">
+            <div class="p_spec" style="position: relative;">
               <ul>
                 <% @product.short_description.split("\n").each do |desc| %>
-                  <li><%= desc %></li>
+                  <li><%= raw desc %></li>
                 <% end %>
               </ul>
+              <%= image_tag "garansi.png", class: "img-fluid garansi" %>
+            </div>
+            <div class="p_compatibility mb-4" style=" padding-left: 25px;">
+              <% @product.compatibility.each do |c| %>
+                <% unless c.blank? %>
+                  <% style = ["panci 68", "panci k655 k625", "wajan 68"].include?(c.downcase) ? "width: 100px" : "width: 65px" %>
+                  <%= image_tag "#{c.downcase.parameterize}.png", class: "img-fluid", style: "#{style}" %>
+                <% end %>
+              <% end %>
             </div>
             <%= link_to "Beli Sekarang", kompor_induksi_path, class: "btn btn-outline-green",
                         data: {toggle: "modal", target: "#shop_modal"} %>
@@ -110,35 +119,7 @@
   </div>
 </section>
 
-<!-- Modal -->
-<div class="modal fade"  id="shop_modal"  tabindex="-1" role="dialog"
-     aria-labelledby="demoModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-    <div class="modal-content">
-
-      <div class="container-fluid">
-        <button type="button" class="close" data-dismiss="modal"
-                aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="pt-sm-3 mb-4 text-center">Beli Sekarang</h2>
-          </div>
-          <div class="col-md-12 text-center" style="padding:0 170px 20px">
-            <%= link_to (image_tag "icon-shopee.png", class: "img-fluid"), 
-                                  "https://shopee.co.id/elektrigo", target: "blank" %>
-          </div>
-          <div class="col-md-12 text-center" style="padding:0 170px 50px">
-            <%= link_to (image_tag "icon-tokopedia.png", class: "img-fluid"), 
-                                  "https://www.tokopedia.com/kanahome-id", target: "blank" %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Ends -->
+<%= render partial: "modal"  %>
 
 <script>
   $(document).ready(function () {

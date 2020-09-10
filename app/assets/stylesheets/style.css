@@ -365,7 +365,7 @@ nav#t-logo{ height: 80px;}
 
 .footer-top-area {
   background-color: #000;
-  padding: 60px 0 20px;
+  padding: 40px 0 20px;
   font-size: 14px;
 }
 
@@ -490,12 +490,24 @@ nav#t-logo{ height: 80px;}
 
 
 @media (max-width: 767px) {
-  .fw-links{
-    float: right;
+  .footer-widget .flogo img{
+    display: block;
+    margin: 0 auto;
   }
-  .fw-contact{
-    padding-top: 40px;
+  .footer-widget .title{
     text-align: center;
+    margin: 0 0 25px
+  }
+  .fw-info .social li img{ 
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+  .fw-info .social li{
+    padding-right: 0;
+    width: 49%;
+    margin-bottom: 20px!important;
+
   }
   .fw-contact .text::after{
     display: none;
@@ -536,6 +548,7 @@ section {
   background-image: url('./marble-bg.jpg');
   background-repeat:no-repeat;
   background-position: center center;
+  background-size: cover;
 }
 #kompor-induksi h1{
   font: 400 35px 'Montserrat', Arial, Helvetica, sans-serif;
@@ -583,6 +596,18 @@ section {
   color: #777;
   line-height: 2.1;
 }
+
+@media (max-width: 767px) {
+  img.gif-mobile{
+    padding-left: 75px;
+    padding-right: 75px;
+    margin-bottom: 0!important;
+  }
+  #kompor-induksi .the-box:first-child {
+    padding-top: 10px!important;
+  }
+} 
+
 
 /* ====================== PRODUCTS ====================== 00d299 */
 section.product-head{
@@ -672,6 +697,12 @@ section.product-head{
   position: absolute;
   top: 41%;
   width: 21px;
+}
+.p_spec img.garansi{
+  width: 23%;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .p_button a{width: 45%;}
 
@@ -878,12 +909,6 @@ section#hubungi-kami{ padding-top: 0px!important;}
 .p_icon{ margin-bottom: 60px;}
 .p_icon .border_even{ border-right: solid 2px #e3e3e3; margin-bottom: 20px;}
 .p_icon .border_odd{ border-right: solid 2px #e3e3e3; margin-bottom: 20px;}
-@media (max-width: 767px) {
-  .border_even{
-    border-right: none!important;
-  }
-  .feature_detail{margin-top: 30px;}
-} 
 
 .p_icon .p_icon_title { text-align: center; font-size: 15px;  margin-bottom: 10px;}
 .p_icon img{ padding: 0 75px; }
@@ -912,6 +937,16 @@ section#hubungi-kami{ padding-top: 0px!important;}
 }
 .spec_detail .detail, .feature_detail .detail{ font-size: 14px;margin-bottom: 40px; }
 
+@media (max-width: 767px) {
+  .border_even{
+    border-right: none!important;
+  }
+  .feature_detail{margin-top: 30px;}
+  .p_feature_detail img{
+    display: block;
+    margin: 0 auto;
+  }
+}
 /* --------------------------------------------
  *  breadcrumb
  *----------------------------------------------- */
@@ -1089,6 +1124,47 @@ ul.nav-title li { margin-bottom: 35px;  }
 ul.nav-title li h4 { margin-bottom: 25px;  }
 a.a-blog { color: #316B7B; text-decoration: underline; }
 a.a-blog:hover { color: #70B8B4; }
+
+/* --------------------------------------------
+ *  BANNER
+ *----------------------------------------------- */
+.modal-bg{
+  background-image: url('./assets/modal-bg.png');
+  background-size: cover;
+}
+.modal-ctn h2{
+  color: #949091;
+  margin-top: 50px;
+  margin-bottom: 60px!important;
+}
+.modal-ctn h2 span.u{ border-bottom: 2px solid #949091; padding-bottom: 10px; }
+.modal-ctn .btn-link{ padding:0 170px 20px; text-align: center; }
+.modal-ctn a{display: block;}
+.modal-ctn .last a{margin-bottom: 124px;}
+@media (max-width: 767px) {
+  .modal-ctn h2{ 
+    font-size: 25px;
+    margin-top: 30px;
+    margin-bottom: 40px!important}
+  .modal-ctn .btn-link{ padding:0 100px 20px; text-align: center; }
+  .modal-ctn .last a{margin-bottom: 50px;}
+
+}
+
+.btn-outline-gray {
+  color: #949091;
+  background-color: transparent;
+  background-image: none;
+  border-color: #949091!important;
+}
+.btn-outline-gray:hover {
+  color: #fff;
+  background-color: #949091;
+  border-color: #949091;
+}
+
+
+
 /* --------------------------------------------
  *  SLICK + OWL
  *----------------------------------------------- */
