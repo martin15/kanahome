@@ -43,7 +43,9 @@
                   <li><%= raw desc %></li>
                 <% end %>
               </ul>
-              <%= image_tag "garansi.png", class: "img-fluid garansi" %>
+              <% if @product.category_name == "Kompor Induksi" %>
+                <%= image_tag "garansi.png", class: "img-fluid garansi" %>
+              <% end %>
             </div>
             <div class="p_compatibility mb-4" style=" padding-left: 25px;">
               <% @product.compatibility.each do |c| %>
