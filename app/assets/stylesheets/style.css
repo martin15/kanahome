@@ -1158,7 +1158,7 @@ a.a-blog:hover { color: #70B8B4; }
 @media (max-width: 575px) {
   .btn-link a{font-size: 13px;border: none!important;}
   .btn-link a:hover{background-color: none!important;text-decoration: underline;}
-  .modal-ctn .btn-link{ padding:0 10px 20px; text-align: center; } */
+  .modal-ctn .btn-link{ padding:0 10px 20px; text-align: center; }
   .modal-ctn .last a{margin-bottom: 200px;}
 }
 
