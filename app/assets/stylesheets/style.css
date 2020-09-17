@@ -946,7 +946,13 @@ section#hubungi-kami{ padding-top: 0px!important;}
     display: block;
     margin: 0 auto;
   }
+  .p_icon img{ padding: 0 20px;}
 }
+
+@media (min-width: 576px) and (max-width: 767px){
+
+}
+@media (max-width: 575px) {}
 /* --------------------------------------------
  *  breadcrumb
  *----------------------------------------------- */
@@ -1141,13 +1147,19 @@ a.a-blog:hover { color: #70B8B4; }
 .modal-ctn .btn-link{ padding:0 170px 20px; text-align: center; }
 .modal-ctn a{display: block;}
 .modal-ctn .last a{margin-bottom: 124px;}
-@media (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 767px){
   .modal-ctn h2{ 
     font-size: 25px;
     margin-top: 30px;
     margin-bottom: 40px!important}
   .modal-ctn .btn-link{ padding:0 100px 20px; text-align: center; }
-  .modal-ctn .last a{margin-bottom: 50px;}
+  .modal-ctn .last a{margin-bottom: 180px;}
+}
+@media (max-width: 575px) {
+  .btn-link a{font-size: 13px;border: none!important;}
+  .btn-link a:hover{background-color: none!important;text-decoration: underline;}
+  .modal-ctn .btn-link{ padding:0 10px 20px; text-align: center; } */
+  .modal-ctn .last a{margin-bottom: 200px;}
 
 }
 
