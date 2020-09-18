@@ -167,7 +167,7 @@
   <div class="container">
     <div class="row">
       <% @kitchenware_products.each do |product| %>
-        <div class="col-4">
+        <div class="col-12 col-md-4 mb-4">
           <div class="product">
             <%= image_tag product.primary_image, class: "img-fluid mb-4" %>
             <div class="cat_name"><%= product.category_name %></div>
